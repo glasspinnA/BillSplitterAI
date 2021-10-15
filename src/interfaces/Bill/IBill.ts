@@ -1,10 +1,9 @@
 import { PaymentMode } from "../../enums/PaymentMode";
-import IBaseBill from "./IBaseBill";
-import IUser from "./../User/IUser";
+import BaseBill from "./IBaseBill";
+import User from "./../User/IUser";
 
-export default interface IBill extends IBaseBill {
+export default interface IBill extends BaseBill {
   PaymentMode: PaymentMode;
-  Payers: IUser[];
+  Payers: User[];
+  PaidByUser?: User;
 }
-
-export type RecordBill = Record<PaymentMode, IBill[]>;

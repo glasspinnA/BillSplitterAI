@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import User from "../../src/interfaces/User/IUser";
+import User from "../../interfaces/User/IUser";
 export const USERS = [
   { Id: uuidv4(), Name: "Vision", Income: 10000 },
   { Id: uuidv4(), Name: "Black Widow", Income: 20000 },
