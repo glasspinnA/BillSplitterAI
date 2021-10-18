@@ -1,21 +1,16 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+// import { TextInput } from "react-native";
+import { Text } from "./src/component/Text";
+import { TextInput } from "./src/component/TextInput";
+import { BaseScreenContainer } from "./src/containers/BaseScreenContainer";
+import { FontSize } from "./src/enums/Text/FontSize";
 
 export default function App() {
+  const [text, onChangeText] = React.useState("");
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <BaseScreenContainer>
+      <Text>First & Last names</Text>
+      <TextInput fontSize={FontSize.H3} placeholder="hello" text={text} onChangeText={onChangeText} />
+    </BaseScreenContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
