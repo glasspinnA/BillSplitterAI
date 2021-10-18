@@ -33,11 +33,11 @@ const CalculateBill = (bill: Bill, userPay: Map<string, UserPay>) => {
         return;
       }
       const user = userPay.get(payer.Id);
-      CalculateCurrentUserSumToPay(bill, user!, payer);
+      AddSumUserShouldPay(bill, user!, payer);
     }
   });
 };
-const CalculateCurrentUserSumToPay = (bill: Bill, userPayer: UserPay, payer: User) => {
+const AddSumUserShouldPay = (bill: Bill, userPayer: UserPay, payer: User) => {
   const sumToPayForBill = GetSumToPayForBill(bill, userPayer);
   const sumToPayPaidUser = GetSumUserShouldPayPaidUser(bill);
   ShouldCalculateBillAsIncomeBased(bill.PaymentMode)
