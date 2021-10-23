@@ -4,4 +4,5 @@ export enum FontStatus {
   INFO = 2,
   WARNING = 3,
   DANGER = 4,
+  DISABLED = 5,
 }

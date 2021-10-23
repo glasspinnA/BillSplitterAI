@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled from "styled-components/native";
+import styled, { DefaultTheme, useTheme } from "styled-components/native";
 
 interface RadioGroupProps {
   children: React.ReactNode;
@@ -7,10 +7,10 @@ interface RadioGroupProps {
   onChange: (index: number) => void;
 }
 const RadioGroup: React.FC<RadioGroupProps> = (props) => {
+  const theme: DefaultTheme = useTheme();
   const onRadioChanged = (index: number) => {
     props.onChange && props.onChange(index);
   };
-
   const children = React.Children.map(props.children, (child, index) => {
     if (React.isValidElement(child)) {
       return React.cloneElement(child, {

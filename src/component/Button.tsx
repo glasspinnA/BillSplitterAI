@@ -1,19 +1,19 @@
 import * as React from "react";
 import styled from "styled-components/native";
-import { getColor } from "../helpers/StyleHelpers";
-import { Colors } from "../styles/Colors";
+import { BaseColor } from "../enums/BaseColor";
+import { getColor, getTextColorByBaseColor } from "../helpers/StyleHelpers";
 import { borderRadiusWrapper } from "../styles/SharedStyles";
 import { Text } from "./Text";
 
 interface ButtonProps {
   onPress: () => void;
-  color?: string;
+  color: BaseColor;
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
   return (
     <TouchableOpacity onPress={props.onPress} color={props.color}>
-      <Text fontColor={Colors.BACKGROUND}>Hello</Text>
+      <Text color={getTextColorByBaseColor(props.color)}>Hello</Text>
     </TouchableOpacity>
   );
 };

@@ -1,10 +1,10 @@
 import * as React from "react";
 import styled from "styled-components/native";
-import { Colors } from "../styles/Colors";
+import { BaseColors } from "../styles/Colors";
 
 interface BaseScreenContainerProps {}
 const Container = styled.SafeAreaView`
-  background: ${Colors.BACKGROUND};
+  background: ${BaseColors.WHITE};
   flex: 1;
 `;
 

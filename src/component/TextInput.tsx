@@ -1,8 +1,7 @@
 import * as React from "react";
-import styled from "styled-components/native";
+import styled, { DefaultTheme, useTheme } from "styled-components/native";
 import { FontSize } from "../enums/Text/FontSize";
 import { GetFontSize } from "../helpers/StyleHelpers";
-import { Colors } from "../styles/Colors";
 
 interface TextInputProps {
   text?: string;
@@ -12,11 +11,13 @@ interface TextInputProps {
 }
 
 const TextInput: React.FC<TextInputProps> = (props) => {
+  const theme: DefaultTheme = useTheme();
+
   return (
     <NativeTextInput
-      selectionColor={Colors.TextInput.SELECTOR}
+      selectionColor={theme.PRIMARY}
       placeholder={props.placeholder}
-      placeholderTextColor={Colors.TextInput.HINT}
+      placeholderTextColor={theme.COMPONENT.TEXT_INPUT.HINT}
       value={props.text}
       onChangeText={props.onChangeText}
       fontSize={props.fontSize}

@@ -1,6 +1,6 @@
+import { BaseColor } from "../enums/BaseColor";
 import { FontSize } from "../enums/Text/FontSize";
-import { FontStatus } from "../enums/Text/FontStatus";
-import { Colors } from "../styles/Colors";
+import { BaseColors } from "../styles/Colors";
 
 const GetFontSize = (size: FontSize | undefined): string => {
   switch (size) {
@@ -41,21 +41,40 @@ const GetFontWeight = (size: FontSize | undefined): string => {
       return "normal";
   }
 };
-const GetFontStatus = (status: FontStatus | undefined) => {
-  switch (status) {
-    case FontStatus.PRIMARY:
-      return Colors.Basics.PRIMARY;
-    case FontStatus.SUCCESS:
-      return Colors.Basics.SUCCESS;
-    case FontStatus.INFO:
-      return Colors.Basics.INFO;
-    case FontStatus.WARNING:
-      return Colors.Basics.WARNING;
-    case FontStatus.DANGER:
-      return Colors.Basics.DANGER;
+const getColor = (color?: BaseColor): string => {
+  switch (color) {
+    case BaseColor.PRIMARY:
+      return BaseColors.PRIMARY;
+    case BaseColor.DANGER:
+      return BaseColors.DANGER;
+    case BaseColor.INFO:
+      return BaseColors.INFO;
+    case BaseColor.WARNING:
+      return BaseColors.WARNING;
+    case BaseColor.SUCCESS:
+      return BaseColors.SUCCESS;
+    case BaseColor.BLACK:
+      return BaseColors.BLACK;
+    case BaseColor.WHITE:
+      return BaseColors.WHITE;
     default:
-      return Colors.Basics.DEFAULT;
+      return "transparent";
   }
 };
 
-export { GetFontSize, GetFontStatus, GetFontWeight };
+export const getTextColorByBaseColor = (color?: BaseColor) => {
+  switch (color) {
+    case BaseColor.PRIMARY:
+    case BaseColor.BLACK:
+      return BaseColor.WHITE;
+    case BaseColor.WHITE:
+    case BaseColor.DANGER:
+    case BaseColor.INFO:
+    case BaseColor.WARNING:
+    case BaseColor.SUCCESS:
+    default:
+      return BaseColor.BLACK;
+  }
+};
+
+export { GetFontSize, GetFontWeight, getColor };
