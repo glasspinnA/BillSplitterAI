@@ -5,6 +5,7 @@ import { Text } from "./Text";
 import { borderRadiusWrapper } from "../styles/SharedStyles";
 import { BaseColor } from "../enums/BaseColor";
 import { getColor, getTextColorByBaseColor } from "../helpers/StyleHelpers";
+import Color from "color";
 
 interface RadioButtonProps {
   isChecked?: boolean;
@@ -28,7 +29,10 @@ const View = styled.View`
   ${borderRadiusWrapper}
   background: ${(props: RadioButtonProps) => getColor(props.isChecked ? props.color : undefined)};
   border-width: 2px;
-  border-color: ${(props: RadioButtonProps) => getColor(props.isChecked ? props.color : undefined)};
+  border-color: ${(props: RadioButtonProps) =>
+    Color(getColor(props.isChecked ? props.color : undefined))
+      .darken(0.2)
+      .hex()};
 `;
 
 export { RadioButton };
