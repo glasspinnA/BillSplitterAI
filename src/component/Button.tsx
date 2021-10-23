@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components/native";
 import { BaseColor } from "../enums/BaseColor";
-import { getColor, getTextColorByBaseColor } from "../helpers/StyleHelpers";
+import { getHEXColor, getTextColorByBaseColor } from "../helpers/StyleHelpers";
 import { borderRadiusWrapper } from "../styles/SharedStyles";
 import { Text } from "./Text";
 
@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 };
 
 const TouchableOpacity = styled.TouchableOpacity`
-  background: ${(props: ButtonProps) => getColor(props.color)};
+  background: ${(props: ButtonProps) => getHEXColor(props.color)};
   align-items: center;
   ${borderRadiusWrapper}
 `;

@@ -1,3 +1,4 @@
+import { DefaultTheme } from "styled-components/native";
 import { BaseColor } from "../enums/BaseColor";
 import { FontSize } from "../enums/Text/FontSize";
 import { BaseColors } from "../styles/Colors";
@@ -41,7 +42,7 @@ const GetFontWeight = (size: FontSize | undefined): string => {
       return "normal";
   }
 };
-const getColor = (color?: BaseColor): string => {
+const getHEXColor = (color?: BaseColor): string => {
   switch (color) {
     case BaseColor.PRIMARY:
       return BaseColors.PRIMARY;
@@ -77,4 +78,8 @@ export const getTextColorByBaseColor = (color?: BaseColor) => {
   }
 };
 
-export { GetFontSize, GetFontWeight, getColor };
+const getSystemTextColor = (theme: DefaultTheme | undefined): BaseColor => {
+  return theme?.IS_DARK_THEME ? BaseColor.WHITE : BaseColor.WHITE;
+};
+
+export { GetFontSize, GetFontWeight, getHEXColor, getSystemTextColor };

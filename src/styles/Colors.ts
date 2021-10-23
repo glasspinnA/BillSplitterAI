@@ -12,6 +12,8 @@ export const BaseColors: IBaseColor = {
 };
 
 export const DarkMode: DefaultTheme = {
+  IS_DARK_THEME: true,
+  BACKGROUND: BaseColors.BLACK,
   ...BaseColors,
   COMPONENT: {
     BUTTON: {},
