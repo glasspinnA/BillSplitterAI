@@ -6,4 +6,5 @@ export default interface IBaseColor {
   DANGER: string;
   BLACK: string;
   WHITE: string;
+  NO_COLOR: string;
 }

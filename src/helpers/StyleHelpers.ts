@@ -1,6 +1,7 @@
 import { DefaultTheme } from "styled-components/native";
 import { BaseColor } from "../enums/BaseColor";
 import { FontSize } from "../enums/Text/FontSize";
+import { FontWeight } from "../enums/Text/FontWeight";
 import { BaseColors } from "../styles/Colors";
 
 const GetFontSize = (size: FontSize | undefined): string => {
@@ -27,14 +28,17 @@ const GetFontSize = (size: FontSize | undefined): string => {
       return "15px";
   }
 };
-const GetFontWeight = (size: FontSize | undefined): string => {
+const getFontWeight = (size: FontSize | undefined | FontWeight): string => {
   switch (size) {
+    case FontWeight.EXTRA_BOLD:
+      return "800";
     case FontSize.H1:
     case FontSize.H2:
     case FontSize.H3:
     case FontSize.H4:
     case FontSize.H5:
     case FontSize.H6:
+    case FontWeight.BOLD:
       return "600";
     case FontSize.S1:
       return "500";
@@ -82,4 +86,4 @@ const getSystemTextColor = (theme: DefaultTheme | undefined): BaseColor => {
   return theme?.IS_DARK_THEME ? BaseColor.WHITE : BaseColor.WHITE;
 };
 
-export { GetFontSize, GetFontWeight, getHEXColor, getSystemTextColor };
+export { GetFontSize, getFontWeight, getHEXColor, getSystemTextColor };

@@ -2,7 +2,7 @@ import * as React from "react";
 import { TouchableWithoutFeedback } from "react-native";
 import styled from "styled-components/native";
 import { Text } from "./Text";
-import { borderRadiusWrapper } from "../styles/SharedStyles";
+import { borderRadiusWrapper, sharedPadding } from "../styles/SharedStyles";
 import { BaseColor } from "../enums/BaseColor";
 import { getHEXColor, getTextColorByBaseColor } from "../helpers/StyleHelpers";
 import Color from "color";
@@ -27,6 +27,7 @@ const RadioButton: React.FC<RadioButtonProps> = (props) => {
 
 const View = styled.View`
   ${borderRadiusWrapper}
+  ${sharedPadding}
   background: ${(props: RadioButtonProps) => getHEXColor(props.isChecked ? props.color : undefined)};
   border-width: 2px;
   border-color: ${(props: RadioButtonProps) =>

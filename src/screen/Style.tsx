@@ -4,7 +4,6 @@ import { Text } from "../component/Text";
 import { RadioButton } from "../component/RadioButton";
 import { RadioGroup } from "../component/RadioGroup";
 import { TextInput } from "../component/TextInput";
-import { BaseScreenContainer } from "../containers/BaseScreenContainer";
 import { BaseColor } from "../enums/BaseColor";
 import { FontSize } from "../enums/Text/FontSize";
 export interface StyleScreenProps {}

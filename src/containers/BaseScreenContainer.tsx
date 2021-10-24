@@ -13,7 +13,8 @@ const Container = styled.SafeAreaView`
 
 const View = styled.View`
   flex: 1;
-  margin-horizontal: 5px;
+  margin-top: 5px;
+  margin-horizontal: 10px;
 `;
 
 const BaseScreenContainer: React.FC<BaseScreenContainerProps> = (props) => {

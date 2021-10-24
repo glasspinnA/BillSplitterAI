@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components/native";
 import { BaseColor } from "../enums/BaseColor";
 import { getHEXColor, getTextColorByBaseColor } from "../helpers/StyleHelpers";
-import { borderRadiusWrapper } from "../styles/SharedStyles";
+import { borderRadiusWrapper, sharedPadding } from "../styles/SharedStyles";
 import { Text } from "./Text";
 
 interface ButtonProps {
@@ -22,6 +22,7 @@ const TouchableOpacity = styled.TouchableOpacity`
   background: ${(props: ButtonProps) => getHEXColor(props.color)};
   align-items: center;
   ${borderRadiusWrapper}
+  ${sharedPadding}
 `;
 
 export { Button };

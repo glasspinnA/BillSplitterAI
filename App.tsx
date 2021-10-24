@@ -7,7 +7,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <BaseScreenContainer>
-        <StyleScreen></StyleScreen>
+        {/* <StyleScreen></StyleScreen> */}
         <CreateUserScreen />
       </BaseScreenContainer>
     </ThemeProvider>

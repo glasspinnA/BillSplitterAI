@@ -9,6 +9,7 @@ export const BaseColors: IBaseColor = {
   DANGER: "#FF3D71",
   BLACK: "#222B45",
   WHITE: "#F7F9FC",
+  NO_COLOR: "transparent",
 };
 
 export const DarkMode: DefaultTheme = {
