@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled, { DefaultTheme, useTheme } from "styled-components/native";
-import { BaseColor } from "../enums/BaseColor";
-import { FontSize } from "../enums/Text/FontSize";
-import { GetFontSize, getFontWeight, getSystemTextColor, getHEXColor } from "../helpers/StyleHelpers";
+import { BaseColor } from "../../enums/BaseColor";
+import { FontSize } from "../../enums/Text/FontSize";
+import { GetFontSize, getFontWeight, getSystemTextColor, getHEXColor } from "../../helpers/StyleHelpers";
 interface TextProps {
   fontSize?: FontSize;
   color?: BaseColor;

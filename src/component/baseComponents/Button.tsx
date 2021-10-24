@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "styled-components/native";
-import { BaseColor } from "../enums/BaseColor";
-import { getHEXColor, getTextColorByBaseColor } from "../helpers/StyleHelpers";
-import { borderRadiusWrapper, sharedPadding } from "../styles/SharedStyles";
+import { BaseColor } from "../../enums/BaseColor";
+import { getHEXColor, getTextColorByBaseColor } from "../../helpers/StyleHelpers";
+import { borderRadiusWrapper, sharedPadding } from "../../styles/SharedStyles";
 import { Text } from "./Text";
 
 interface ButtonProps {

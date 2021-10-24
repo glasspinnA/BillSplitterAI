@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Button } from "../component/Button";
-import { Text } from "../component/Text";
-import { RadioButton } from "../component/RadioButton";
-import { RadioGroup } from "../component/RadioGroup";
-import { TextInput } from "../component/TextInput";
+import { Button } from "../component/baseComponents/Button";
+import { Text } from "../component/baseComponents/Text";
+import { RadioButton } from "../component/baseComponents/RadioButton";
+import { RadioGroup } from "../component/baseComponents/RadioGroup";
+import { TextInput } from "../component/baseComponents/TextInput";
 import { BaseColor } from "../enums/BaseColor";
 import { FontSize } from "../enums/Text/FontSize";
 export interface StyleScreenProps {}

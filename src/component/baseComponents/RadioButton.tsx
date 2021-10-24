@@ -2,9 +2,9 @@ import * as React from "react";
 import { TouchableWithoutFeedback } from "react-native";
 import styled from "styled-components/native";
 import { Text } from "./Text";
-import { borderRadiusWrapper, sharedPadding } from "../styles/SharedStyles";
-import { BaseColor } from "../enums/BaseColor";
-import { getHEXColor, getTextColorByBaseColor } from "../helpers/StyleHelpers";
+import { borderRadiusWrapper, sharedPadding } from "../../styles/SharedStyles";
+import { BaseColor } from "../../enums/BaseColor";
+import { getHEXColor, getTextColorByBaseColor } from "../../helpers/StyleHelpers";
 import Color from "color";
 
 interface RadioButtonProps {

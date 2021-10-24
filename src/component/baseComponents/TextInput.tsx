@@ -2,10 +2,10 @@ import Color from "color";
 import * as React from "react";
 import styled, { DefaultTheme, useTheme } from "styled-components/native";
 import { css } from "styled-components";
-import { FontSize } from "../enums/Text/FontSize";
-import { FontWeight } from "../enums/Text/FontWeight";
-import { GetFontSize, getHEXColor, getSystemTextColor, getFontWeight } from "../helpers/StyleHelpers";
-import { borderRadiusWrapper } from "../styles/SharedStyles";
+import { FontSize } from "../../enums/Text/FontSize";
+import { FontWeight } from "../../enums/Text/FontWeight";
+import { GetFontSize, getHEXColor, getSystemTextColor, getFontWeight } from "../../helpers/StyleHelpers";
+import { borderRadiusWrapper } from "../../styles/SharedStyles";
 
 interface TextInputProps {
   text?: string;

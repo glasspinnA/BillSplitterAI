@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ThemeProvider as Theme } from "styled-components/native";
-import { DarkMode } from "../styles/Colors";
+import { DarkMode } from "../../styles/Colors";
 
 interface ThemeProps {}
 
