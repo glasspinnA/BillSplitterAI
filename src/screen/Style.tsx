@@ -2,7 +2,7 @@ import * as React from "react";
 import { Button } from "../component/baseComponents/Button";
 import { Text } from "../component/baseComponents/Text";
 import { RadioButton } from "../component/baseComponents/RadioButton";
-import { RadioGroup } from "../component/baseComponents/RadioGroup";
+import { RadioGroup } from "../component/baseComponents/ButtonGroup";
 import { TextInput } from "../component/baseComponents/TextInput";
 import { BaseColor } from "../enums/BaseColor";
 import { FontSize } from "../enums/Text/FontSize";

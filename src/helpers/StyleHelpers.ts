@@ -46,7 +46,7 @@ const getFontWeight = (size: FontSize | undefined | FontWeight): string => {
       return "normal";
   }
 };
-const getHEXColor = (color?: BaseColor): string => {
+const getHEXColor = (color?: BaseColor | string): string => {
   switch (color) {
     case BaseColor.PRIMARY:
       return BaseColors.PRIMARY;
@@ -62,8 +62,10 @@ const getHEXColor = (color?: BaseColor): string => {
       return BaseColors.BLACK;
     case BaseColor.WHITE:
       return BaseColors.WHITE;
-    default:
+    case undefined:
       return "transparent";
+    default:
+      return color?.toString();
   }
 };
 

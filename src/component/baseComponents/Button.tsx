@@ -13,7 +13,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = (props) => {
   return (
     <TouchableOpacity onPress={props.onPress} color={props.color}>
-      <Text color={getTextColorByBaseColor(props.color)}>Hello</Text>
+      <Text color={getTextColorByBaseColor(props.color)}>{props.children}</Text>
     </TouchableOpacity>
   );
 };

@@ -45,7 +45,8 @@ const NativeTextInput = styled.TextInput`
     css`
       background: ${Color(props.theme?.BACKGROUND).lighten(0.5).hex()};
       ${borderRadiusWrapper}
-      padding-left:5px
+      padding-left:5px;
+      padding-vertical: 10px;
     `}
   ${(props: TextInputProps) =>
     props.fontWeight &&

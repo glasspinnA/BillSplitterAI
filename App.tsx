@@ -1,6 +1,7 @@
 import React from "react";
 import { ThemeProvider } from "./src/component/baseComponents/ThemeProvider";
 import { BaseScreenContainer } from "./src/containers/BaseScreenContainer";
+import { BillingScreen } from "./src/screen/Billing";
 import { CreateUserScreen } from "./src/screen/CreateUser";
 import { StyleScreen } from "./src/screen/Style";
 export default function App() {
@@ -8,7 +9,8 @@ export default function App() {
     <ThemeProvider>
       <BaseScreenContainer>
         {/* <StyleScreen></StyleScreen> */}
-        <CreateUserScreen />
+        {/* <CreateUserScreen /> */}
+        <BillingScreen></BillingScreen>
       </BaseScreenContainer>
     </ThemeProvider>
   );

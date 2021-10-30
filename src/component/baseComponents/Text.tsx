@@ -5,7 +5,7 @@ import { FontSize } from "../../enums/Text/FontSize";
 import { GetFontSize, getFontWeight, getSystemTextColor, getHEXColor } from "../../helpers/StyleHelpers";
 interface TextProps {
   fontSize?: FontSize;
-  color?: BaseColor;
+  color?: BaseColor | string;
   theme?: DefaultTheme;
 }
 const NativeText = styled.Text`
