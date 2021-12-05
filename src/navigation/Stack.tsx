@@ -1,0 +1,43 @@
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { CreateUserScreen } from "../screen/CreateUser";
+import { BillingOverViewScreen } from "../screen/BillingOverview";
+import { BillingScreen } from "../screen/Billing";
+import { UserPayOverViewScreen } from "../screen/UserPayOverview";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+const Tab = createBottomTabNavigator();
+const _Stack = createNativeStackNavigator();
+
+export const Stack = () => {
+  return <NavigationContainer>{__DEV__ ? devStack() : prodStack()}</NavigationContainer>;
+};
+
+const prodStack = () => {
+  return (
+    <_Stack.Navigator>
+      <_Stack.Screen name={ScreenNames.USER} component={CreateUserScreen} />
+      <_Stack.Screen name={ScreenNames.BILLING_OVERVIEW} component={BillingOverViewScreen} />
+      <_Stack.Screen name={ScreenNames.BILLING} component={BillingScreen} />
+      <_Stack.Screen name={ScreenNames.USER_PAY} component={UserPayOverViewScreen} />
+    </_Stack.Navigator>
+  );
+};
+
+const devStack = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name={ScreenNames.USER} component={CreateUserScreen} />
+      <Tab.Screen name={ScreenNames.BILLING_OVERVIEW} component={BillingOverViewScreen} />
+      <Tab.Screen name={ScreenNames.BILLING} component={BillingScreen} />
+      <Tab.Screen name={ScreenNames.USER_PAY} component={UserPayOverViewScreen} />
+    </Tab.Navigator>
+  );
+};
+
+class ScreenNames {
+  static USER: string = "User";
+  static BILLING_OVERVIEW: string = "Billing Overview";
+  static BILLING: string = "Billing";
+  static USER_PAY: string = "User Pay";
+}
