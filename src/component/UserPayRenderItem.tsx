@@ -2,7 +2,7 @@ import * as React from "react";
 import { TouchableWithoutFeedback, View } from "react-native";
 import { Text } from "../component/baseComponents/Text";
 import UserPay from "../interfaces/User/IUserPay";
-import { borderRadiusWrapper, FlatListItem } from "../styles/SharedStyles";
+import { AlignItems, borderRadiusWrapper, FlatListItem } from "../styles/SharedStyles";
 import styled from "styled-components/native";
 import { BaseColors } from "./../styles/Colors";
 import { FontSize } from "../enums/Text/FontSize";
@@ -11,6 +11,8 @@ import { PaymentMode, getPaymentModeName } from "../enums/PaymentMode";
 import { UserIcon } from "./UserIcon";
 import { getHEXColor } from "./../helpers/StyleHelpers";
 import Color from "color";
+import { Icon, IconName } from "./Icon";
+import { Rotate } from "./animation/Rotate";
 export interface UserPayRenderItemProps {
   item: UserPay;
 }
@@ -54,13 +56,18 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
       <View>
         <FlatListItem.Item flex={0}>
           <FlatListItem.Row>
-            <FlatListItem.Column flex={2}>
+            <FlatListItem.Column flex={3}>
               <Text fontSize={FontSize.S2}>{props.item.Name}</Text>
             </FlatListItem.Column>
             <FlatListItem.Column>
               <SumToPay>
                 <Text>{props.item.TotalSumToPay} kr</Text>
               </SumToPay>
+            </FlatListItem.Column>
+            <FlatListItem.Column alignItems={AlignItems.CENTER}>
+              <Rotate isClicked={toggle}>
+                <Icon icon={IconName.CHEVRON} />
+              </Rotate>
             </FlatListItem.Column>
           </FlatListItem.Row>
         </FlatListItem.Item>

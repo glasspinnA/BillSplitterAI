@@ -29,11 +29,20 @@ const Row = styled.View`
 
 interface Column {
   flex?: number;
+  alignItems?: AlignItems;
 }
 const Column = styled.View`
   flex: ${(props: Column) => (props.flex == undefined ? 1 : props.flex)};
   align-self: center;
+  align-items: ${(props: Column) =>
+    props.alignItems == undefined ? (AlignItems.FLEX_START as string) : (props.alignItems as string)};
 `;
+
+class AlignItems {
+  static FLEX_START: string = "flex-start";
+  static FLEX_END: string = "flex-end";
+  static CENTER: string = "center";
+}
 
 const FlatListItem = {
   Row: Row,
@@ -41,4 +50,4 @@ const FlatListItem = {
   Column: Column,
 };
 
-export { borderRadiusWrapper, sharedPadding, FlatListItem };
+export { borderRadiusWrapper, sharedPadding, FlatListItem, AlignItems };
