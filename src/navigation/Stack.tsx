@@ -15,7 +15,11 @@ export const Stack = () => {
 
 const prodStack = () => {
   return (
-    <_Stack.Navigator>
+    <_Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <_Stack.Screen name={ScreenNames.USER} component={CreateUserScreen} />
       <_Stack.Screen name={ScreenNames.BILLING_OVERVIEW} component={BillingOverViewScreen} />
       <_Stack.Screen name={ScreenNames.BILLING} component={BillingScreen} />
@@ -26,7 +30,11 @@ const prodStack = () => {
 
 const devStack = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Tab.Screen name={ScreenNames.USER} component={CreateUserScreen} />
       <Tab.Screen name={ScreenNames.BILLING_OVERVIEW} component={BillingOverViewScreen} />
       <Tab.Screen name={ScreenNames.BILLING} component={BillingScreen} />

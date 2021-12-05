@@ -5,9 +5,9 @@ import { Stack } from "./src/navigation/Stack";
 export default function App() {
   return (
     <ThemeProvider>
-      {/* <BaseScreenContainer>
-      </BaseScreenContainer> */}
-      <Stack />
+      <BaseScreenContainer>
+        <Stack />
+      </BaseScreenContainer>
     </ThemeProvider>
   );
 }
