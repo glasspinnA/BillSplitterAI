@@ -16,6 +16,7 @@ const MapUserToUserPay = (user: User): UserPay => {
 
 const GetBillPaymentInfo = (bill: Bill, SumToPay: number, sumToPayUser?: number): IBillPaymentInfo => {
   return {
+    Id: bill.Id,
     Name: bill.Name,
     Price: bill.Price,
     SumForUserToPay: SumToPay,

@@ -3,24 +3,10 @@ import { PaymentMode } from "../enums/PaymentMode";
 import Bill from "../interfaces/Bill/IBill";
 import IBillPaymentInfo from "../interfaces/Bill/IBillPaymentInfo";
 import UserPay from "../interfaces/User/IUserPay";
-import { GET_EXTRA_USER, USERS } from "./constants/constants";
+import { GetDummy_Bills, GET_EXTRA_USER, USERS } from "./constants/constants";
 test("1", () => {
   const users = USERS;
-  const bill = [
-    {
-      Name: "Godi",
-      Price: 20,
-      PaymentMode: PaymentMode.EVEN_PAYED,
-      Payers: users,
-    },
-    {
-      Name: "Hyra",
-      Price: 570,
-      PaymentMode: PaymentMode.INCOME_BASED_PAYED,
-      Payers: users,
-    },
-  ] as Bill[];
-
+  const bill = GetDummy_Bills();
   const expected = [
     {
       Id: users[0].Id,
