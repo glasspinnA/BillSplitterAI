@@ -2,6 +2,10 @@ import { css } from "styled-components";
 import styled from "styled-components/native";
 import { BaseColors } from "./Colors";
 
+const Container = styled.View`
+  background: ${BaseColors.BLACK};
+`;
+
 const borderRadiusWrapper = css`
   border-radius: 9px;
 `;
@@ -15,7 +19,7 @@ interface Item {
   flex?: number;
 }
 const Item = styled.View`
-  background: ${BaseColors.PRIMARY} 
+  background: ${BaseColors.BLACK} 
   ${borderRadiusWrapper} 
   ${sharedPadding} 
   margin-vertical:10px;
@@ -24,7 +28,6 @@ const Item = styled.View`
 
 const Row = styled.View`
   flex-direction: row;
-  flex: 1;
 `;
 
 interface Column {
@@ -50,4 +53,15 @@ const FlatListItem = {
   Column: Column,
 };
 
-export { borderRadiusWrapper, sharedPadding, FlatListItem, AlignItems };
+const shadow = css`
+  shadow-color: black;
+  shadow-offset: {
+    width: 0;
+    height: 7;
+  }
+  shadow-opacity: 0.37;
+  shadow-radius: 7.84;
+  elevation: 12;
+  ${borderRadiusWrapper}
+`;
+export { borderRadiusWrapper, sharedPadding, FlatListItem, AlignItems, Container, shadow };

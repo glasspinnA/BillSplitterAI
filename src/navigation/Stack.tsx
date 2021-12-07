@@ -8,8 +8,24 @@ import { UserPayOverViewScreen } from "../screen/UserPayOverview";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Tab = createBottomTabNavigator();
 const _Stack = createNativeStackNavigator();
+import { useColorScheme } from "react-native";
+import { BaseColor } from "../enums/BaseColor";
+
+const MyTheme = {
+  dark: false,
+  colors: {
+    primary: BaseColor.WARNING,
+    background: BaseColor.WARNING,
+    card: BaseColor.WARNING,
+    text: BaseColor.WARNING,
+    border: BaseColor.WARNING,
+    notification: BaseColor.WARNING,
+  },
+};
 
 export const Stack = () => {
+  const scheme = useColorScheme();
+
   return <NavigationContainer>{__DEV__ ? devStack() : prodStack()}</NavigationContainer>;
 };
 
@@ -35,9 +51,9 @@ const devStack = () => {
         headerShown: false,
       }}
     >
-      <Tab.Screen name={ScreenNames.USER} component={CreateUserScreen} />
+      {/* <Tab.Screen name={ScreenNames.USER} component={CreateUserScreen} />
       <Tab.Screen name={ScreenNames.BILLING_OVERVIEW} component={BillingOverViewScreen} />
-      <Tab.Screen name={ScreenNames.BILLING} component={BillingScreen} />
+      <Tab.Screen name={ScreenNames.BILLING} component={BillingScreen} /> */}
       <Tab.Screen name={ScreenNames.USER_PAY} component={UserPayOverViewScreen} />
     </Tab.Navigator>
   );

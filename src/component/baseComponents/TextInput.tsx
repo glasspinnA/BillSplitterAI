@@ -5,7 +5,7 @@ import { css } from "styled-components";
 import { FontSize } from "../../enums/Text/FontSize";
 import { FontWeight } from "../../enums/Text/FontWeight";
 import { GetFontSize, getHEXColor, getSystemTextColor, getFontWeight } from "../../helpers/StyleHelpers";
-import { borderRadiusWrapper } from "../../styles/SharedStyles";
+import { borderRadiusWrapper, shadow } from "../../styles/SharedStyles";
 
 interface TextInputProps {
   text?: string;
@@ -53,4 +53,5 @@ const NativeTextInput = styled.TextInput`
     css`
       font-weight: ${getFontWeight(props.fontWeight)};
     `}
+    ${shadow}
 `;

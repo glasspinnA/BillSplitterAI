@@ -10,6 +10,7 @@ import { getPaymentModeName, PaymentMode } from "../enums/PaymentMode";
 import { FontSize } from "../enums/Text/FontSize";
 import User from "../interfaces/User/IUser";
 import { USERS } from "../tests/constants/constants";
+import { Container } from "./../styles/SharedStyles";
 export interface BillingScreenProps {}
 
 export function BillingScreen(props: BillingScreenProps) {
@@ -47,7 +48,7 @@ export function BillingScreen(props: BillingScreenProps) {
     return elments;
   };
   return (
-    <>
+    <Container>
       <Text fontSize={FontSize.H2}>Create{"\n"}New Bill</Text>
       <TextInput fontSize={FontSize.S1} onChangeText={onChangeText} placeholder={"Bill Title"} showBackground={true} />
       <Text>Bill Type</Text>
@@ -72,6 +73,6 @@ export function BillingScreen(props: BillingScreenProps) {
       <Button onPress={onCreateBillPress} color={BaseColor.PRIMARY}>
         Create Bill
       </Button>
-    </>
+    </Container>
   );
 }
