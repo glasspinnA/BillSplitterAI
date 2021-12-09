@@ -1,42 +1,39 @@
 import * as React from "react";
 import { TouchableWithoutFeedback } from "react-native";
-import styled, { DefaultTheme, useTheme } from "styled-components/native";
-import { Text } from "./Text";
+import styled from "styled-components/native";
 import { borderRadiusWrapper, sharedPadding } from "../../styles/SharedStyles";
-import { BaseColor } from "../../enums/BaseColor";
-import { getHEXColor, getTextColorByBaseColor } from "../../helpers/StyleHelpers";
 import Color from "color";
+import { Text } from "@ui-kitten/components";
+
 import { IButtonChildProps } from "../../interfaces/IButtonChild";
-import { PaymentMode } from "../../enums/PaymentMode";
+import { Colors } from "../../constant/Colors";
 
 const RadioButton = <T extends {}>(props: IButtonChildProps<T> & { children: React.ReactNode }) => {
-  const theme = useTheme();
   const onPress = () => {
     props.onPress && props.onPress(props.data);
   };
-  const getTextColorBySelectedState = (isChecked?: boolean) => {
-    return isChecked ? getTextColorByBaseColor(props.color) : getDisabledColor(theme);
+  const getTextColorBySelectedState = (isChecked?: boolean): string => {
+    return isChecked ? props.color : Colors.DISABLED;
   };
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View isChecked={props.isChecked!} color={props.color} theme={props.theme}>
-        <Text color={getTextColorBySelectedState(props.isChecked)}>{props.children}</Text>
+        <Text style={{color: getTextColorBySelectedState(props.isChecked)}}>{(props.children as string)}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
 };
 
-const getDisabledColor = (theme: DefaultTheme) => Color(theme.COMPONENT.TEXT_INPUT.HINT).darken(0.5).hex();
-const getSelectedBorderColor = (color: BaseColor) => Color(getHEXColor(color)).darken(0.2).hex();
+const getSelectedBorderColor = (color: Colors) => Color(color).darken(0.2).hex();
 
 const View = styled.View`
   ${borderRadiusWrapper}
   ${sharedPadding}
-  background: ${(props: IButtonChildProps) => getHEXColor(props.isChecked ? props.color : undefined)};
+  background: ${(props: IButtonChildProps) => (props.isChecked ? props.color : undefined)};
   border-width: 2px;
   border-color: ${(props: IButtonChildProps) =>
-    props.isChecked ? getSelectedBorderColor(props.color) : getDisabledColor(props.theme!)};
+    props.isChecked ? getSelectedBorderColor(props.color) : Colors.DISABLED};
   margin-right: 10px;
 `;
 

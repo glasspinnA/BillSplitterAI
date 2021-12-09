@@ -36,9 +36,9 @@ const devStack = () => {
       }}
     >
       <Tab.Screen name={ScreenNames.USER} component={CreateUserScreen} />
-      {/* <Tab.Screen name={ScreenNames.BILLING_OVERVIEW} component={BillingOverViewScreen} />
+      <Tab.Screen name={ScreenNames.BILLING_OVERVIEW} component={BillingOverViewScreen} />
       <Tab.Screen name={ScreenNames.BILLING} component={BillingScreen} />
-      <Tab.Screen name={ScreenNames.USER_PAY} component={UserPayOverViewScreen} /> */}
+      <Tab.Screen name={ScreenNames.USER_PAY} component={UserPayOverViewScreen} />
     </Tab.Navigator>
   );
 };

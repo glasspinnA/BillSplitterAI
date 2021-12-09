@@ -1,18 +1,15 @@
 import * as React from "react";
-import { Dimensions, TouchableWithoutFeedback, View, Animated, Easing, Button } from "react-native";
+import { Dimensions, TouchableWithoutFeedback, View, Animated } from "react-native";
 import UserPay from "../interfaces/User/IUserPay";
-import { AlignItems, borderRadiusWrapper, FlatListItem, sharedPadding } from "../styles/SharedStyles";
+import { AlignItems, borderRadiusWrapper, FlatListItem,  } from "../styles/SharedStyles";
 import styled from "styled-components/native";
-import { BaseColors } from "./../styles/Colors";
-import { FontSize } from "../enums/Text/FontSize";
 import BillPaymentInfo from "../interfaces/Bill/IBillPaymentInfo";
 import { PaymentMode, getPaymentModeName } from "../enums/PaymentMode";
-import { UserIcon } from "./UserIcon";
-import { getHEXColor } from "./../helpers/StyleHelpers";
-import Color from "color";
 import { Icon, IconName } from "./Icon";
 import { Rotate } from "./animation/Rotate";
-import { Text } from "./../component/baseComponents/Text";
+import { Divider, Text } from '@ui-kitten/components';
+import { Colors } from "../constant/Colors";
+
 export interface UserPayRenderItemProps {
   item: UserPay;
 }
@@ -25,7 +22,7 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
     if (billPaymentInfo.length === 0) return <></>;
     return (
       <>
-        <Text fontSize={FontSize.S1}>{title}</Text>
+        <Text>{title}</Text>
         {billPaymentInfo.map((x) => (
           <>
             <View>
@@ -44,7 +41,7 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
                   <FlatListItem.Column>{/* <UserIcon name={x.UserToPaySumTo!.Name} /> */}</FlatListItem.Column>
                 )}
               </FlatListItem.Row>
-              <Divider />
+              <Divider/>
             </View>
           </>
         ))}
@@ -57,7 +54,7 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
       <FlatListItem.Item flex={0}>
         <FlatListItem.Row>
           <FlatListItem.Column flex={3}>
-            <Text fontSize={FontSize.S2}>{props.item.Name}</Text>
+            <Text>{props.item.Name}</Text>
           </FlatListItem.Column>
           <FlatListItem.Column>
             <SumToPay>
@@ -148,14 +145,14 @@ const AnimatedColumn = styled(Animated.View)`
 `;
 
 const AnimatedItem = styled(Animated.View)`
-  background: ${BaseColors.BLACK} 
+  background: ${Colors.BASIC_COLOR} 
   ${borderRadiusWrapper} 
   margin-vertical:10px;
   flex: 1;
 `;
 
 const SumToPay = styled.View`
-  background: ${BaseColors.SUCCESS} 
+  background: ${Colors.SUCCESS} 
   ${borderRadiusWrapper} 
   padding-vertical:6px;
   padding-horizontal:5px;
@@ -163,8 +160,4 @@ const SumToPay = styled.View`
   align-items:center;
 `;
 
-const Divider = styled.View`
-  border-bottom-color: ${Color(getHEXColor(BaseColors.WHITE)).darken(0.4).hex()};
-  border-bottom-width: 1px;
-  margin-vertical: 2px;
-`;
+

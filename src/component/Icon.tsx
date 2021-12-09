@@ -1,16 +1,17 @@
+import { useTheme } from "@ui-kitten/components";
 import * as React from "react";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import { BaseColor } from "../enums/BaseColor";
-import { BaseColors } from "../styles/Colors";
+import { Colors } from "../constant/Colors";
 
 interface IconProps {
   icon: IconName;
-  color?: BaseColor;
+  color?: Colors;
   size?: number;
 }
 
 const Icon: React.FC<IconProps> = (props) => {
-  return <FontAwesome5 name={props.icon as string} color={props.color ?? BaseColors.BLACK} size={props.size ?? 20} />;
+  const theme = useTheme();
+  return <FontAwesome5 name={props.icon as string} color={(props.color  ?? theme[Colors.BASIC_COLOR]) as string} size={props.size ?? 20} />;
 };
 
 class IconName {

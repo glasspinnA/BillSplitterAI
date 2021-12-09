@@ -1,5 +1,5 @@
+import { Layout } from "@ui-kitten/components";
 import * as React from "react";
-import { Layout } from "react-native-ui-kitten/ui/layout/layout.component";
 
 interface AppProps {}
 

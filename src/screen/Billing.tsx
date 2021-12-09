@@ -1,19 +1,17 @@
 import * as React from "react";
-import { Button } from "../component/baseComponents/Button";
 import { RadioButton } from "../component/baseComponents/RadioButton";
 import { ButtonGroup } from "../component/baseComponents/ButtonGroup";
 import { CheckBox } from "../component/baseComponents/Checkbox";
-import { Text } from "../component/baseComponents/Text";
-import { TextInput } from "../component/baseComponents/TextInput";
-import { BaseColor } from "../enums/BaseColor";
 import { getPaymentModeName, PaymentMode } from "../enums/PaymentMode";
-import { FontSize } from "../enums/Text/FontSize";
 import User from "../interfaces/User/IUser";
 import { USERS } from "../tests/constants/constants";
-import { Container } from "./../styles/SharedStyles";
+import { ScreenContainer } from "../component/ScreenContainer";
+import { Input, Text, Button, useTheme } from "@ui-kitten/components";
 export interface BillingScreenProps {}
 
 export function BillingScreen(props: BillingScreenProps) {
+  const theme = useTheme();
+
   const [selectedRadioIndex, setSelectedRadioIndex] = React.useState<number>(PaymentMode.EVEN_PAYED);
   const [selectedCheckboxes, setSelectedCheckboxes] = React.useState<Map<string, number>>(
     new Map().set("b2ff5870-8aab-44a2-9f40-3b99ecc3a739", 0).set("efcc590d-42c3-4dda-90be-3056fe3495d8", 1)
@@ -39,7 +37,7 @@ export function BillingScreen(props: BillingScreenProps) {
     for (const paymentMode in PaymentMode) {
       if (!isNaN(Number(paymentMode))) {
         elments.push(
-          <RadioButton data={paymentMode} color={BaseColor.PRIMARY}>
+          <RadioButton data={paymentMode} color={theme['color-primary-default']}>
             {getPaymentModeName(Number(paymentMode))}
           </RadioButton>
         );
@@ -48,9 +46,9 @@ export function BillingScreen(props: BillingScreenProps) {
     return elments;
   };
   return (
-    <Container>
-      <Text fontSize={FontSize.H2}>Create{"\n"}New Bill</Text>
-      <TextInput fontSize={FontSize.S1} onChangeText={onChangeText} placeholder={"Bill Title"} showBackground={true} />
+    <ScreenContainer>
+      <Text>Create{"\n"}New Bill</Text>
+      <Input onChangeText={onChangeText} placeholder={"Bill Title"} />
       <Text>Bill Type</Text>
       <ButtonGroup
         selectedIndex={selectedRadioIndex}
@@ -70,9 +68,9 @@ export function BillingScreen(props: BillingScreenProps) {
         <CheckBox data={USERS[0]}>Hello</CheckBox>
         <CheckBox data={USERS[1]}>Bye</CheckBox>
       </ButtonGroup>
-      <Button onPress={onCreateBillPress} color={BaseColor.PRIMARY}>
+      <Button onPress={onCreateBillPress}>
         Create Bill
       </Button>
-    </Container>
+    </ScreenContainer>
   );
 }

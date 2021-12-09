@@ -1,11 +1,10 @@
 import * as React from "react";
 import { View, ListRenderItemInfo } from "react-native";
 import { Flatlist } from "../component/baseComponents/Flatlist";
-import { Text } from "../component/baseComponents/Text";
+import { Text } from '@ui-kitten/components';
 import Bill from "../interfaces/Bill/IBill";
 import { FlatListItem } from "../styles/SharedStyles";
 import { GetDummy_Bills } from "../tests/constants/constants";
-import { FontSize } from "../enums/Text/FontSize";
 import { getPaymentModeName } from "../enums/PaymentMode";
 import { UserIcon } from "../component/UserIcon";
 
@@ -17,10 +16,10 @@ export function BillingOverViewScreen(props: BillingOverViewScreenProps) {
       <FlatListItem.Item>
         <FlatListItem.Row>
           <FlatListItem.Column flex={3}>
-            <Text fontSize={FontSize.S1}>{item.Name}</Text>
+            <Text>{item.Name}</Text>
           </FlatListItem.Column>
           <FlatListItem.Column>
-            <Text fontSize={FontSize.P2}>{item.Price} kr</Text>
+            <Text>{item.Price} kr</Text>
           </FlatListItem.Column>
         </FlatListItem.Row>
         <FlatListItem.Row>

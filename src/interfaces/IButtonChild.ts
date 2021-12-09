@@ -1,9 +1,8 @@
 import { DefaultTheme } from "styled-components/native";
-import { BaseColor } from "../enums/BaseColor";
-
+import { Colors } from "../constant/Colors";
 export interface IButtonChildProps<T> {
   data: T;
-  color?: BaseColor;
+  color?: Colors;
   isChecked?: boolean;
   theme?: DefaultTheme;
   index?: number;
