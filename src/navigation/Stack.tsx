@@ -6,17 +6,22 @@ import { BillingOverViewScreen } from "../screen/BillingOverview";
 import { BillingScreen } from "../screen/Billing";
 import { UserPayOverViewScreen } from "../screen/UserPayOverview";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ScreenName } from "../constant/ScreenName";
 const Tab = createBottomTabNavigator();
 const _Stack = createNativeStackNavigator();
 
 export const Stack = () => {
-  const screens : Screen[] = [
-    {name: ScreenName.USER, component: CreateUserScreen }, 
-    {name: ScreenName.BILLING, component: BillingScreen }, 
-    {name: ScreenName.BILLING_OVERVIEW, component: BillingOverViewScreen },
-    {name: ScreenName.USER_PAY, component: UserPayOverViewScreen }
+  const screens: Screen[] = [
+    { name: ScreenName.USER, component: CreateUserScreen },
+    { name: ScreenName.BILLING, component: BillingScreen },
+    { name: ScreenName.BILLING_OVERVIEW, component: BillingOverViewScreen },
+    { name: ScreenName.USER_PAY, component: UserPayOverViewScreen },
   ];
-  return <NavigationContainer>{__DEV__ ? devStack(screens) : prodStack(screens)}</NavigationContainer>;
+  return (
+    <NavigationContainer>
+      {__DEV__ ? devStack(screens) : prodStack(screens)}
+    </NavigationContainer>
+  );
 };
 
 const prodStack = (screens: Screen[]) => {
@@ -43,20 +48,17 @@ const devStack = (screens: Screen[]) => {
   );
 };
 
-const getScreens = (screens : Screen[], isProd?: boolean): JSX.Element[] => {
-  return screens.map(x => isProd 
-    ? <_Stack.Screen name={x.name} component={x.component} /> 
-    : <Tab.Screen name={x.name} component={x.component} />);
-}
+const getScreens = (screens: Screen[], isProd?: boolean): JSX.Element[] => {
+  return screens.map((x) =>
+    isProd ? (
+      <_Stack.Screen name={x.name} component={x.component} />
+    ) : (
+      <Tab.Screen name={x.name} component={x.component} />
+    )
+  );
+};
 
-interface Screen{
+interface Screen {
   name: string;
   component: React.ComponentType<any>;
-} 
-
-class ScreenName {
-  static USER: string = "User";
-  static BILLING_OVERVIEW: string = "Billing Overview";
-  static BILLING: string = "Billing";
-  static USER_PAY: string = "User Pay";
 }
