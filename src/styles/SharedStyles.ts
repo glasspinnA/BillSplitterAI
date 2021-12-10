@@ -1,9 +1,9 @@
 import { css } from "styled-components";
 import styled from "styled-components/native";
-import { BaseColors } from "./Colors";
+import { Colors } from "../constant/Colors";
 
 const Container = styled.View`
-  background: ${BaseColors.BLACK};
+  background: ${Colors.BASIC_COLOR.value};
 `;
 
 const borderRadiusWrapper = css`
@@ -19,7 +19,7 @@ interface Item {
   flex?: number;
 }
 const Item = styled.View`
-  background: ${BaseColors.BLACK} 
+  background: ${Colors.BASIC_COLOR.value} 
   ${borderRadiusWrapper} 
   ${sharedPadding} 
   margin-vertical:10px;

@@ -4,7 +4,6 @@ import styled from "styled-components/native";
 import { borderRadiusWrapper, sharedPadding } from "../../styles/SharedStyles";
 import Color from "color";
 import { Text } from "@ui-kitten/components";
-
 import { IButtonChildProps } from "../../interfaces/IButtonChild";
 import { Colors } from "../../constant/Colors";
 
@@ -13,27 +12,30 @@ const RadioButton = <T extends {}>(props: IButtonChildProps<T> & { children: Rea
     props.onPress && props.onPress(props.data);
   };
   const getTextColorBySelectedState = (isChecked?: boolean): string => {
-    return isChecked ? props.color : Colors.DISABLED;
+    return isChecked 
+      ? Colors.WHITE.value 
+      : Colors.DISABLED.value;
   };
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View isChecked={props.isChecked!} color={props.color} theme={props.theme}>
+      <View isChecked={props.isChecked!} color={props.color}>
         <Text style={{color: getTextColorBySelectedState(props.isChecked)}}>{(props.children as string)}</Text>
       </View>
     </TouchableWithoutFeedback>
   );
 };
 
-const getSelectedBorderColor = (color: Colors) => Color(color).darken(0.2).hex();
+const getSelectedBorderColor = (color: string) => Color(color).darken(0.2).hex();
+
 
 const View = styled.View`
   ${borderRadiusWrapper}
   ${sharedPadding}
-  background: ${(props: IButtonChildProps) => (props.isChecked ? props.color : undefined)};
+  background: ${(props: IButtonChildProps<typeof RadioButton>) => (props.isChecked ? props.color : "transparent")};
   border-width: 2px;
-  border-color: ${(props: IButtonChildProps) =>
-    props.isChecked ? getSelectedBorderColor(props.color) : Colors.DISABLED};
+  border-color: ${(props: IButtonChildProps<typeof RadioButton>) =>
+    props.isChecked ? getSelectedBorderColor(props.color) : Colors.DISABLED.value};
   margin-right: 10px;
 `;
 

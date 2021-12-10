@@ -7,6 +7,7 @@ import User from "../interfaces/User/IUser";
 import { USERS } from "../tests/constants/constants";
 import { ScreenContainer } from "../component/ScreenContainer";
 import { Input, Text, Button, useTheme } from "@ui-kitten/components";
+import { Colors } from "../constant/Colors";
 export interface BillingScreenProps {}
 
 export function BillingScreen(props: BillingScreenProps) {
@@ -37,7 +38,7 @@ export function BillingScreen(props: BillingScreenProps) {
     for (const paymentMode in PaymentMode) {
       if (!isNaN(Number(paymentMode))) {
         elments.push(
-          <RadioButton data={paymentMode} color={theme['color-primary-default']}>
+          <RadioButton data={paymentMode} color={Colors.PRIMARY.value}>
             {getPaymentModeName(Number(paymentMode))}
           </RadioButton>
         );

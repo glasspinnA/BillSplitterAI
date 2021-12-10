@@ -1,12 +1,11 @@
 import * as React from "react";
-import styled, { DefaultTheme, useTheme } from "styled-components/native";
+import styled from "styled-components/native";
 import { IButtonChildProps } from "../../interfaces/IButtonChild";
 interface ButtonGroup<T> {
   selectedIndex: number | number[];
   onChange: (data: T, index: number) => void;
 }
 const ButtonGroup = <T extends {}>(props: ButtonGroup<T> & { children: React.ReactNode }) => {
-  const theme: DefaultTheme = useTheme();
   const onChange = (data: T, index: number) => {
     props.onChange && props.onChange(data, index);
   };

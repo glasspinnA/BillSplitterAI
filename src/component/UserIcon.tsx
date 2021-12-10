@@ -15,7 +15,7 @@ export function UserIcon(props: UserIconProps) {
 }
 
 const Circle = styled.View`
-  background: ${Colors.SUCCESS};
+  background: ${Colors.SUCCESS.value};
   border-radius: 15px;
   width: 30px;
   height: 30px;

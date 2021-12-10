@@ -145,14 +145,14 @@ const AnimatedColumn = styled(Animated.View)`
 `;
 
 const AnimatedItem = styled(Animated.View)`
-  background: ${Colors.BASIC_COLOR} 
+  background: ${Colors.BASIC_COLOR.value} 
   ${borderRadiusWrapper} 
   margin-vertical:10px;
   flex: 1;
 `;
 
 const SumToPay = styled.View`
-  background: ${Colors.SUCCESS} 
+  background: ${Colors.SUCCESS.value} 
   ${borderRadiusWrapper} 
   padding-vertical:6px;
   padding-horizontal:5px;

@@ -10,40 +10,51 @@ const Tab = createBottomTabNavigator();
 const _Stack = createNativeStackNavigator();
 
 export const Stack = () => {
-  return <NavigationContainer>{__DEV__ ? devStack() : prodStack()}</NavigationContainer>;
+  const screens : Screen[] = [
+    {name: ScreenName.USER, component: CreateUserScreen }, 
+    {name: ScreenName.BILLING, component: BillingScreen }, 
+    {name: ScreenName.BILLING_OVERVIEW, component: BillingOverViewScreen },
+    {name: ScreenName.USER_PAY, component: UserPayOverViewScreen }
+  ];
+  return <NavigationContainer>{__DEV__ ? devStack(screens) : prodStack(screens)}</NavigationContainer>;
 };
 
-const prodStack = () => {
+const prodStack = (screens: Screen[]) => {
   return (
     <_Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
     >
-      <_Stack.Screen name={ScreenNames.USER} component={CreateUserScreen} />
-      <_Stack.Screen name={ScreenNames.BILLING_OVERVIEW} component={BillingOverViewScreen} />
-      <_Stack.Screen name={ScreenNames.BILLING} component={BillingScreen} />
-      <_Stack.Screen name={ScreenNames.USER_PAY} component={UserPayOverViewScreen} />
+      {getScreens(screens, true)}
     </_Stack.Navigator>
   );
 };
 
-const devStack = () => {
+const devStack = (screens: Screen[]) => {
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Tab.Screen name={ScreenNames.USER} component={CreateUserScreen} />
-      <Tab.Screen name={ScreenNames.BILLING_OVERVIEW} component={BillingOverViewScreen} />
-      <Tab.Screen name={ScreenNames.BILLING} component={BillingScreen} />
-      <Tab.Screen name={ScreenNames.USER_PAY} component={UserPayOverViewScreen} />
+      {getScreens(screens)}
     </Tab.Navigator>
   );
 };
 
-class ScreenNames {
+const getScreens = (screens : Screen[], isProd?: boolean): JSX.Element[] => {
+  return screens.map(x => isProd 
+    ? <_Stack.Screen name={x.name} component={x.component} /> 
+    : <Tab.Screen name={x.name} component={x.component} />);
+}
+
+interface Screen{
+  name: string;
+  component: React.ComponentType<any>;
+} 
+
+class ScreenName {
   static USER: string = "User";
   static BILLING_OVERVIEW: string = "Billing Overview";
   static BILLING: string = "Billing";

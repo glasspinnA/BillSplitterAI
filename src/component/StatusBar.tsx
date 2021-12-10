@@ -7,7 +7,7 @@ export function CustomStatusBar(props: CustomStatusBarProps) {
   const STATUS_BAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBar.currentHeight;
   const theme = useTheme();
   return (
-    <View style={{ height: STATUS_BAR_HEIGHT, backgroundColor: theme[Colors.BACKGROUND] }}>
+    <View style={{ height: STATUS_BAR_HEIGHT, backgroundColor: theme[Colors.BACKGROUND.key] }}>
       <StatusBar barStyle={"dark-content"} />
     </View>
   );
