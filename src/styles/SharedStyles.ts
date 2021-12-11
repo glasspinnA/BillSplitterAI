@@ -19,26 +19,35 @@ interface Item {
   flex?: number;
 }
 const Item = styled.View`
-  background: ${Colors.BASIC_COLOR.value} 
+  background: ${Colors.BACKGROUND.value} 
   ${borderRadiusWrapper} 
   ${sharedPadding} 
-  margin-vertical:10px;
   flex: ${(props: Column) => (props.flex == undefined ? 1 : props.flex)};
+  border:1px solid ${Colors.BASIC_COLOR_900.value};
+  overflow:hidden;
+  margin-vertical: 5px;
 `;
 
+interface Row {
+  flexDirection?: FlexDirection;
+}
+
 const Row = styled.View`
-  flex-direction: row;
+  flex-direction: ${(props: Row) =>
+    (props.flexDirection ?? FlexDirection.ROW) as string};
 `;
 
 interface Column {
   flex?: number;
   alignItems?: AlignItems;
+  alignSelf?: AlignItems;
 }
 const Column = styled.View`
   flex: ${(props: Column) => (props.flex == undefined ? 1 : props.flex)};
-  align-self: center;
+  align-self: ${(props: Column) =>
+    (props.alignSelf ?? AlignItems.FLEX_START) as string};
   align-items: ${(props: Column) =>
-    props.alignItems == undefined ? (AlignItems.FLEX_START as string) : (props.alignItems as string)};
+    (props.alignItems ?? AlignItems.FLEX_START) as string};
 `;
 
 class AlignItems {
@@ -47,21 +56,35 @@ class AlignItems {
   static CENTER: string = "center";
 }
 
+class FlexDirection {
+  static ROW: string = "row";
+  static COLUMN: string = "column";
+}
+
 const FlatListItem = {
   Row: Row,
   Item: Item,
   Column: Column,
 };
 
-const shadow = css`
-  shadow-color: black;
+const ShadowView = styled.View`
+  background: red;
+  border-radius: 9px;
+  margin-vertical: 10px;
+  shadow-color: green;
   shadow-offset: {
     width: 0;
-    height: 7;
+    height: 1;
   }
-  shadow-opacity: 0.37;
-  shadow-radius: 7.84;
-  elevation: 12;
-  ${borderRadiusWrapper}
+  shadow-opacity: 1;
 `;
-export { borderRadiusWrapper, sharedPadding, FlatListItem, AlignItems, Container, shadow };
+
+export {
+  borderRadiusWrapper,
+  sharedPadding,
+  FlatListItem,
+  AlignItems,
+  Container,
+  ShadowView,
+  FlexDirection,
+};

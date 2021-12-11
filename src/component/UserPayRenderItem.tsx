@@ -1,14 +1,24 @@
 import * as React from "react";
-import { Dimensions, TouchableWithoutFeedback, View, Animated } from "react-native";
+import {
+  Dimensions,
+  TouchableWithoutFeedback,
+  View,
+  Animated,
+} from "react-native";
 import UserPay from "../interfaces/User/IUserPay";
-import { AlignItems, borderRadiusWrapper, FlatListItem,  } from "../styles/SharedStyles";
+import {
+  AlignItems,
+  borderRadiusWrapper,
+  FlatListItem,
+} from "../styles/SharedStyles";
 import styled from "styled-components/native";
 import BillPaymentInfo from "../interfaces/Bill/IBillPaymentInfo";
 import { PaymentMode, getPaymentModeName } from "../enums/PaymentMode";
 import { Icon, IconName } from "./Icon";
 import { Rotate } from "./animation/Rotate";
-import { Divider, Text } from '@ui-kitten/components';
+import { Divider, Text } from "@ui-kitten/components";
 import { Colors } from "../constant/Colors";
+import { SumToPay } from "./SumToPay";
 
 export interface UserPayRenderItemProps {
   item: UserPay;
@@ -18,7 +28,10 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
   const [toggle, setToggle] = React.useState(true);
   const { height, width } = Dimensions.get("window");
 
-  const renderRowView = (billPaymentInfo: BillPaymentInfo[], title: string): JSX.Element => {
+  const renderRowView = (
+    billPaymentInfo: BillPaymentInfo[],
+    title: string
+  ): JSX.Element => {
     if (billPaymentInfo.length === 0) return <></>;
     return (
       <>
@@ -38,10 +51,12 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
               </FlatListItem.Row>
               <FlatListItem.Row>
                 {x.SumToPayUser && (
-                  <FlatListItem.Column>{/* <UserIcon name={x.UserToPaySumTo!.Name} /> */}</FlatListItem.Column>
+                  <FlatListItem.Column>
+                    {/* <UserIcon name={x.UserToPaySumTo!.Name} /> */}
+                  </FlatListItem.Column>
                 )}
               </FlatListItem.Row>
-              <Divider/>
+              <Divider />
             </View>
           </>
         ))}
@@ -57,9 +72,7 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
             <Text>{props.item.Name}</Text>
           </FlatListItem.Column>
           <FlatListItem.Column>
-            <SumToPay>
-              <Text>{props.item.TotalSumToPay} kr</Text>
-            </SumToPay>
+            <SumToPay sumToPay={props.item.TotalSumToPay} />
           </FlatListItem.Column>
           <FlatListItem.Column alignItems={AlignItems.CENTER}>
             <Rotate isClicked={toggle}>
@@ -76,14 +89,22 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
       <AnimatedItem style={[{ height: interpolatedHeight }]}>
         <FlatListItem.Row>
           <AnimatedColumn style={[{ opacity: opacity }]}>
-            {renderRowView(props.item.SumToPayIncomeBased, getPaymentModeName(PaymentMode.INCOME_BASED_PAYED))}
-            {renderRowView(props.item.SumToPayEvenBased, getPaymentModeName(PaymentMode.EVEN_PAYED))}
+            {renderRowView(
+              props.item.SumToPayIncomeBased,
+              getPaymentModeName(PaymentMode.INCOME_BASED_PAYED)
+            )}
+            {renderRowView(
+              props.item.SumToPayEvenBased,
+              getPaymentModeName(PaymentMode.EVEN_PAYED)
+            )}
           </AnimatedColumn>
         </FlatListItem.Row>
       </AnimatedItem>
     );
   };
-  const [animatedHeight, setAnimatedHeight] = React.useState(new Animated.Value(0));
+  const [animatedHeight, setAnimatedHeight] = React.useState(
+    new Animated.Value(0)
+  );
   const [opacity, setOpacity] = React.useState(new Animated.Value(0));
 
   const animationDuration = 950;
@@ -129,7 +150,10 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
   });
   return (
     <>
-      <TouchableWithoutFeedback style={{ flex: 1, maxHeight: 300 }} onPress={onItemPressed}>
+      <TouchableWithoutFeedback
+        style={{ flex: 1, maxHeight: 300 }}
+        onPress={onItemPressed}
+      >
         <View style={{ flex: 1 }}>
           {renderRowHeader()}
           {props.item.TotalSumToPay > 0 && renderRowBody()}
@@ -150,14 +174,3 @@ const AnimatedItem = styled(Animated.View)`
   margin-vertical:10px;
   flex: 1;
 `;
-
-const SumToPay = styled.View`
-  background: ${Colors.SUCCESS.value} 
-  ${borderRadiusWrapper} 
-  padding-vertical:6px;
-  padding-horizontal:5px;
-  min-width:80%;
-  align-items:center;
-`;
-
-
