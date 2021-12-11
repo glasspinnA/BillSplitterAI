@@ -5,6 +5,7 @@ import { Status } from "./../constant/Status";
 import { Fontsize } from "../constant/Fontsize";
 import { View } from "react-native";
 import { Icon, IconName } from "./Icon";
+import { AddButton } from "./AddButton";
 export interface UserFormProps {
   data: t[];
   onUserSubmit: (data: any) => void;
@@ -61,8 +62,6 @@ export function UserForm(props: UserFormProps) {
     props.onUserSubmit(data);
   };
 
-  const icon = () => <Icon icon={IconName.PLUS} />;
-
   return (
     <View style={{ flex: 1, alignContent: "center" }}>
       <View
@@ -74,9 +73,7 @@ export function UserForm(props: UserFormProps) {
         {elements}
       </View>
       <View style={{ justifyContent: "center", flex: 1 }}>
-        <Button onPress={handleSubmit(onPress)} accessoryLeft={icon}>
-          Add User
-        </Button>
+        <AddButton onPress={handleSubmit(onPress)}>Add User</AddButton>
       </View>
     </View>
   );

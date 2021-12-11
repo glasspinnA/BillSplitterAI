@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, ListRenderItemInfo } from "react-native";
 import { Flatlist } from "../component/baseComponents/Flatlist";
-import { Text } from "@ui-kitten/components";
+import { Button, Text } from "@ui-kitten/components";
 import Bill from "../interfaces/Bill/IBill";
 import {
   AlignItems,
@@ -13,6 +13,10 @@ import { getPaymentModeName } from "../enums/PaymentMode";
 import { ScreenContainer } from "../component/ScreenContainer";
 import { Fontsize } from "../constant/Fontsize";
 import { SumToPay } from "../component/SumToPay";
+import { ScreenName } from "../constant/ScreenName";
+import { useNavigation } from "@react-navigation/native";
+import { Icon } from "../component/Icon";
+import { AddButton } from "../component/AddButton";
 
 export interface BillingOverViewScreenProps {}
 
@@ -53,6 +57,11 @@ export function BillingOverViewScreen(props: BillingOverViewScreenProps) {
     );
   };
 
+  const navigation = useNavigation();
+  const navigate = () => {
+    navigation.navigate(ScreenName.BILLING as never);
+  };
+
   return (
     <ScreenContainer>
       <Text category={Fontsize.H1}>Billing {"\n"}Overview</Text>
@@ -61,6 +70,7 @@ export function BillingOverViewScreen(props: BillingOverViewScreenProps) {
         keyExtractor={(item: Bill) => item.Id}
         renderItem={renderItem}
       />
+      <AddButton onPress={navigate}>Add Billing</AddButton>
     </ScreenContainer>
   );
 }
