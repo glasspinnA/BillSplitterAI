@@ -9,20 +9,15 @@ import { ScreenContainer } from "../component/ScreenContainer";
 import { Input, Text, Button, useTheme } from "@ui-kitten/components";
 import { Colors } from "../constant/Colors";
 import { Fontsize } from "../constant/Fontsize";
+import { Header } from "../component/ScreenHeader";
 export interface BillingScreenProps {}
 
 export function BillingScreen(props: BillingScreenProps) {
   const theme = useTheme();
 
-  const [selectedRadioIndex, setSelectedRadioIndex] = React.useState<number>(
-    PaymentMode.EVEN_PAYED
-  );
-  const [selectedCheckboxes, setSelectedCheckboxes] = React.useState<
-    Map<string, number>
-  >(
-    new Map()
-      .set("b2ff5870-8aab-44a2-9f40-3b99ecc3a739", 0)
-      .set("efcc590d-42c3-4dda-90be-3056fe3495d8", 1)
+  const [selectedRadioIndex, setSelectedRadioIndex] = React.useState<number>(PaymentMode.EVEN_PAYED);
+  const [selectedCheckboxes, setSelectedCheckboxes] = React.useState<Map<string, number>>(
+    new Map().set("b2ff5870-8aab-44a2-9f40-3b99ecc3a739", 0).set("efcc590d-42c3-4dda-90be-3056fe3495d8", 1)
   );
 
   const onChangeText = (text: string) => {};
@@ -55,7 +50,7 @@ export function BillingScreen(props: BillingScreenProps) {
   };
   return (
     <ScreenContainer>
-      <Text category={Fontsize.H1}>Create{"\n"}New Bill</Text>
+      <Header>Create{"\n"}New Bill</Header>
       <Input onChangeText={onChangeText} placeholder={"Bill Title"} />
       <Text category={Fontsize.S1}>Bill Type</Text>
       <ButtonGroup

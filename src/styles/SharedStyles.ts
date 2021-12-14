@@ -45,7 +45,7 @@ interface Column {
 const Column = styled.View`
   flex: ${(props: Column) => (props.flex == undefined ? 1 : props.flex)};
   align-self: ${(props: Column) =>
-    (props.alignSelf ?? AlignItems.FLEX_START) as string};
+    (props.alignSelf ?? AlignItems.CENTER) as string};
   align-items: ${(props: Column) =>
     (props.alignItems ?? AlignItems.FLEX_START) as string};
 `;

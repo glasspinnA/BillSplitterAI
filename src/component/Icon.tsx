@@ -21,7 +21,7 @@ const Icon: React.FC<IconProps> = (props) => {
 };
 
 class IconName {
-  static CHEVRON: string = "chevron-circle-up";
+  static CHEVRON: string = "chevron-circle-down";
   static PLUS: string = "plus-circle";
 }
 

@@ -42,17 +42,41 @@ export const GetDummy_UserPay = (): UserPay[] => {
       Id: USERS[1].Id,
       Income: USERS[1].Income,
       Name: USERS[1].Name,
-      TotalSumToPay: 1000,
+      TotalSumToPay: 1200,
       SumToPayIncomeBased: [
-        { SumForUserToPay: 100, UserToPaySumTo: USERS[0], SumToPayUser: 100, Name: GetDummy_Bills()[1].Name },
-        { SumForUserToPay: 20, UserToPaySumTo: USERS[0], SumToPayUser: 20, Name: GetDummy_Bills()[0].Name },
+        {
+          SumForUserToPay: 100,
+          UserToPaySumTo: USERS[0],
+          SumToPayUser: 100,
+          Name: GetDummy_Bills()[1].Name,
+        },
+        {
+          SumForUserToPay: 20,
+          UserToPaySumTo: USERS[0],
+          SumToPayUser: 20,
+          Name: GetDummy_Bills()[0].Name,
+        },
       ] as IBillPaymentInfo[],
       SumToPayEvenBased: [
-        { SumForUserToPay: 1000, UserToPaySumTo: USERS[0], SumToPayUser: 1000, Name: GetDummy_Bills()[0].Name },
-        { SumForUserToPay: 200, UserToPaySumTo: USERS[0], SumToPayUser: 200, Name: GetDummy_Bills()[1].Name },
+        {
+          SumForUserToPay: 1000,
+          UserToPaySumTo: USERS[0],
+          SumToPayUser: 1000,
+          Name: GetDummy_Bills()[0].Name,
+        },
+        {
+          SumForUserToPay: 200,
+          UserToPaySumTo: USERS[0],
+          SumToPayUser: 200,
+          Name: GetDummy_Bills()[1].Name,
+        },
       ] as IBillPaymentInfo[],
     },
   ] as UserPay[];
 };
 
-export const GET_EXTRA_USER = { Id: uuidv4(), Name: "Name: " + uuidv4, Income: 500 } as User;
+export const GET_EXTRA_USER = {
+  Id: uuidv4(),
+  Name: "Name: " + uuidv4,
+  Income: 500,
+} as User;
