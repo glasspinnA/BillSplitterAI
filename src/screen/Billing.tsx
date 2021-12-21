@@ -16,14 +16,10 @@ export function BillingScreen(props: BillingScreenProps) {
   const theme = useTheme();
 
   const [selectedRadioIndex, setSelectedRadioIndex] = React.useState<number>(PaymentMode.EVEN_PAYED);
-  const [selectedCheckboxes, setSelectedCheckboxes] = React.useState<Map<string, number>>(
-    new Map().set("b2ff5870-8aab-44a2-9f40-3b99ecc3a739", 0).set("efcc590d-42c3-4dda-90be-3056fe3495d8", 1)
-  );
+  const [selectedCheckboxes, setSelectedCheckboxes] = React.useState<Map<string, number>>(new Map());
 
   const onChangeText = (text: string) => {};
   const onRadioChange = (selectedIndex: number) => {
-    console.log("Selected index" + selectedIndex);
-
     setSelectedRadioIndex(selectedIndex);
   };
   const onCheckBoxPressed = (user: User, index: number) => {

@@ -1,20 +1,38 @@
+import { EvaStatus } from "@ui-kitten/components/devsupport";
 import { Button } from "@ui-kitten/components/ui/button/button.component";
 import * as React from "react";
 import { Status } from "../../constant/Status";
 import { IButtonChildProps } from "../../interfaces/IButtonChild";
 
-const CheckBox = <T extends {}>(
-  props: IButtonChildProps<T> & { children: React.ReactNode }
-) => {
-  const onPress = () => {
-    console.log("pressed");
+const CheckBox = <T extends {}>(props: IButtonChildProps<T> & { children: React.ReactNode }) => {
+  const onPress = () => props.onPress && props.onPress(props.data);
+  const [background, setBackground] = React.useState<EvaStatus>();
 
-    props.onPress && props.onPress(props.data);
+  React.useEffect(() => {
+    setBackground(getRandomBackground() as EvaStatus);
+  }, []);
+
+  const getRandomBackground = (): string => {
+    const value = Math.floor(Math.random() * 5);
+    switch (value) {
+      case 0:
+        return Status.DANGER;
+      case 1:
+        return Status.WARNING;
+      case 2:
+        return Status.PRIMARY;
+      case 3:
+        return Status.SUCCESS;
+      default:
+        return Status.INFO;
+    }
   };
 
   return (
     <Button
-      status={props.isChecked ? Status.PRIMARY : Status.SUCCESS}
+      style={{ marginRight: 10, marginVertical: 10 }}
+      status={background}
+      appearance={props.isChecked ? "filled" : "outline"}
       onPress={onPress}
     >
       {props.children as string}
