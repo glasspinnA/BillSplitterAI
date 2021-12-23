@@ -3,4 +3,5 @@ export class ScreenName {
   static BILLING_OVERVIEW: string = "Billing Overview";
   static BILLING: string = "Billing";
   static USER_PAY: string = "User Pay";
+  static USER_OVERVIEW: string = "User Overview";
 }

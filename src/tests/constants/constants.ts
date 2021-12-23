@@ -28,6 +28,7 @@ export const GetDummy_Bills = (): Bill[] => {
   ];
 };
 
+export const GetDummy_Users = () => USERS;
 export const GetDummy_UserPay = (): UserPay[] => {
   return [
     {
