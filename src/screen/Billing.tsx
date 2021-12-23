@@ -10,39 +10,33 @@ import { Input, Text, Button, useTheme } from "@ui-kitten/components";
 import { Colors } from "../constant/Colors";
 import { Fontsize } from "../constant/Fontsize";
 import { Header } from "../component/ScreenHeader";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, ValidateResult } from "react-hook-form";
 import { Status } from "../constant/Status";
 import { KeyBoardDismiss } from "../component/KeyboardDismiss";
 export interface BillingScreenProps {}
 
 export function BillingScreen(props: BillingScreenProps) {
-  const theme = useTheme();
   const {
     control,
     handleSubmit,
     formState: { errors },
     reset,
+    register,
+    trigger,
   } = useForm();
   const [selectedRadioIndex, setSelectedRadioIndex] = React.useState<number>(PaymentMode.EVEN_PAYED);
   const [selectedCheckboxes, setSelectedCheckboxes] = React.useState<Map<string, number>>(new Map());
 
-  const onChangeText = (text: string) => {};
-  const onRadioChange = (selectedIndex: number) => {
-    setSelectedRadioIndex(selectedIndex);
-  };
   const onCheckBoxPressed = (user: User, index: number) => {
-    const m = new Map(selectedCheckboxes);
-    m.has(user.Id) ? m.delete(user.Id) : m.set(user.Id, index);
-    setSelectedCheckboxes(new Map(m));
+    const selectedUsers = new Map(selectedCheckboxes);
+    selectedUsers.has(user.Id) ? selectedUsers.delete(user.Id) : selectedUsers.set(user.Id, index);
+    setSelectedCheckboxes(new Map(selectedUsers));
   };
   const onCreateBillPress = (data: any) => {
-    console.log("hessllo");
-
     console.log(data);
   };
   const getPaymentModes = () => {
     const elments: JSX.Element[] = [];
-
     for (const paymentMode in PaymentMode) {
       if (!isNaN(Number(paymentMode))) {
         elments.push(
@@ -54,24 +48,31 @@ export function BillingScreen(props: BillingScreenProps) {
     }
     return elments;
   };
+
+  const isAnyCheckboxChecked = (): ValidateResult => selectedCheckboxes.size > 0;
+
   return (
     <ScreenContainer>
       <KeyBoardDismiss>
         <Header>Create{"\n"}New Bill</Header>
         <Controller
           control={control}
-          rules={{}}
+          rules={{
+            required: true,
+          }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <Input onChangeText={onChangeText} placeholder={"Bill Title"} />
+            <Input onChangeText={onChange} value={value} placeholder={"Bill Title"} />
           )}
-          name={"x.Name1"}
-          defaultValue=""
+          name="Name"
         />
+        <Text style={{ opacity: errors.Name ? 1 : 0 }} category={Fontsize.LABEL} status={Status.DANGER}>
+          Bill name required
+        </Text>
         <Text category={Fontsize.S1}>Bill Type</Text>
         <ButtonGroup
           selectedIndex={selectedRadioIndex}
           onChange={(index: PaymentMode) => {
-            onRadioChange(index);
+            setSelectedRadioIndex(index);
           }}
         >
           {getPaymentModes()}
@@ -79,7 +80,11 @@ export function BillingScreen(props: BillingScreenProps) {
         <Text category={Fontsize.S1}>Users</Text>
         <Controller
           control={control}
-          rules={{}}
+          rules={{
+            validate: {
+              isChecked: () => isAnyCheckboxChecked(),
+            },
+          }}
           render={({ field: { onChange, onBlur, value } }) => (
             <ButtonGroup
               selectedIndex={Array.from(selectedCheckboxes.values())}
@@ -91,11 +96,10 @@ export function BillingScreen(props: BillingScreenProps) {
               <CheckBox data={USERS[1]}>Bye</CheckBox>
             </ButtonGroup>
           )}
-          name={"x.Name"}
-          defaultValue=""
+          name="User"
         />
-        <Text style={{ opacity: errors["x.Name"] ? 1 : 0 }} category={Fontsize.LABEL} status={Status.DANGER}>
-          hello
+        <Text style={{ opacity: errors.User ? 1 : 0 }} category={Fontsize.LABEL} status={Status.DANGER}>
+          At least one user is required
         </Text>
 
         <Button onPress={handleSubmit(onCreateBillPress)}>Create Bill</Button>
