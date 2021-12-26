@@ -8,15 +8,17 @@ import { ScreenName } from "../constant/ScreenName";
 import { ItemRow } from "../component/ItemRow";
 import { GetItemData } from "../helpers/MappingHelper";
 import { OverviewComponent } from "./OverviewComponent";
+import { useAppContext } from "../context/Consumer";
 
 export interface BillingOverViewScreenProps {}
 
 export function BillingOverViewScreen(props: BillingOverViewScreenProps) {
+  const { bills } = useAppContext();
   const renderItem = ({ item }: ListRenderItemInfo<Bill>) => (
     <ItemRow item={GetItemData(item.Name, item.PaymentMode, item.Price)} />
   );
   const getFlatList = (): JSX.Element => (
-    <Flatlist<Bill> items={GetDummy_Bills()} keyExtractor={(item: Bill) => item.Id} renderItem={renderItem} />
+    <Flatlist<Bill> items={bills} keyExtractor={(item: Bill) => item.Id} renderItem={renderItem} />
   );
   const getOverviewTitle = (): string => "Billing\nOverview";
   const getButtonTitle = (): string => "Add Billing";

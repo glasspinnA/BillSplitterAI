@@ -78,6 +78,14 @@ export const GetDummy_UserPay = (): UserPay[] => {
 
 export const GET_EXTRA_USER = {
   Id: uuidv4(),
-  Name: "Name: " + uuidv4,
+  Name: "NAME",
   Income: 500,
 } as User;
+
+export const GET_EXTRA_BILL = {
+  Id: uuidv4(),
+  Name: "Hus",
+  Price: 570,
+  PaymentMode: PaymentMode.INCOME_BASED_PAYED,
+  Payers: USERS,
+};

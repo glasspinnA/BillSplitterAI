@@ -4,15 +4,19 @@ import { ButtonGroup } from "../component/baseComponents/ButtonGroup";
 import { CheckBox } from "../component/baseComponents/Checkbox";
 import { getPaymentModeName, PaymentMode } from "../enums/PaymentMode";
 import User from "../interfaces/User/IUser";
-import { USERS } from "../tests/constants/constants";
+import { GET_EXTRA_BILL } from "../tests/constants/constants";
 import { ScreenContainer } from "../component/ScreenContainer";
-import { Input, Text, Button, useTheme } from "@ui-kitten/components";
+import { Input, Text, Button } from "@ui-kitten/components";
 import { Colors } from "../constant/Colors";
 import { Fontsize } from "../constant/Fontsize";
 import { Header } from "../component/ScreenHeader";
 import { Controller, useForm, ValidateResult } from "react-hook-form";
 import { Status } from "../constant/Status";
 import { KeyBoardDismiss } from "../component/KeyboardDismiss";
+import { useAppContext } from "../context/Consumer";
+import { ActionType } from "../context/Context";
+import { ScreenName } from "../constant/ScreenName";
+import { useNavigation } from "@react-navigation/native";
 export interface BillingScreenProps {}
 
 export function BillingScreen(props: BillingScreenProps) {
@@ -20,12 +24,11 @@ export function BillingScreen(props: BillingScreenProps) {
     control,
     handleSubmit,
     formState: { errors },
-    reset,
-    register,
-    trigger,
   } = useForm();
   const [selectedRadioIndex, setSelectedRadioIndex] = React.useState<number>(PaymentMode.EVEN_PAYED);
   const [selectedCheckboxes, setSelectedCheckboxes] = React.useState<Map<string, number>>(new Map());
+  const { dispatchAction, users } = useAppContext();
+  const navigation = useNavigation();
 
   const onCheckBoxPressed = (user: User, index: number) => {
     const selectedUsers = new Map(selectedCheckboxes);
@@ -33,7 +36,8 @@ export function BillingScreen(props: BillingScreenProps) {
     setSelectedCheckboxes(new Map(selectedUsers));
   };
   const onCreateBillPress = (data: any) => {
-    console.log(data);
+    dispatchAction(ActionType.ADD_BILL, GET_EXTRA_BILL);
+    navigation.navigate(ScreenName.USER_OVERVIEW as never);
   };
   const getPaymentModes = () => {
     const elments: JSX.Element[] = [];
@@ -47,6 +51,10 @@ export function BillingScreen(props: BillingScreenProps) {
       }
     }
     return elments;
+  };
+
+  const getCheckboxUsers = (): JSX.Element[] => {
+    return users.map((user) => <CheckBox data={user}>{user.Name}</CheckBox>);
   };
 
   const isAnyCheckboxChecked = (): ValidateResult => selectedCheckboxes.size > 0;
@@ -92,8 +100,7 @@ export function BillingScreen(props: BillingScreenProps) {
                 onCheckBoxPressed(user, index);
               }}
             >
-              <CheckBox data={USERS[0]}>Hello</CheckBox>
-              <CheckBox data={USERS[1]}>Bye</CheckBox>
+              {getCheckboxUsers()}
             </ButtonGroup>
           )}
           name="User"

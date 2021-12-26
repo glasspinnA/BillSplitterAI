@@ -1,17 +1,19 @@
 import * as React from "react";
 import { ListRenderItemInfo } from "react-native";
 import { Flatlist } from "../component/baseComponents/Flatlist";
-import { GetDummy_Users } from "../tests/constants/constants";
 import { ScreenContainer } from "../component/ScreenContainer";
 import { ScreenName } from "../constant/ScreenName";
 import { OverviewComponent } from "./OverviewComponent";
 import User from "../interfaces/User/IUser";
 import { FlatListItem, FlexDirection } from "../styles/SharedStyles";
 import { Text } from "@ui-kitten/components";
+import { useAppContext } from "../context/Consumer";
 
 export interface UserOverviewProps {}
 
 export function UserOverviewScreen(props: UserOverviewProps) {
+  const { users } = useAppContext();
+
   const renderItem = ({ item }: ListRenderItemInfo<User>) => {
     return (
       <FlatListItem.Item>
@@ -27,7 +29,7 @@ export function UserOverviewScreen(props: UserOverviewProps) {
     );
   };
   const getFlatList = (): JSX.Element => (
-    <Flatlist<User> items={GetDummy_Users()} keyExtractor={(item: User) => item.Id} renderItem={renderItem} />
+    <Flatlist<User> items={users} keyExtractor={(item: User) => item.Id} renderItem={renderItem} />
   );
   const getOverviewTitle = (): string => "User\nOverview";
   const getButtonTitle = (): string => "Add User";
