@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Animated, LayoutRectangle } from "react-native";
+import { Animated, LayoutRectangle, View } from "react-native";
 import styled from "styled-components/native";
 import { GetRowItemAnimationConfig } from "../../constant/Animation";
 import { IItem } from "../../interfaces/IItem";

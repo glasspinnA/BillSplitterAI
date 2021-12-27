@@ -9,7 +9,14 @@ interface FlatlistProps<T> {
 }
 
 const Flatlist = <T extends {}>(props: FlatlistProps<T> /*& { children: React.ReactNode }*/) => {
-  return <NativeFlatList data={props.items} renderItem={props.renderItem} keyExtractor={props.keyExtractor} />;
+  return (
+    <NativeFlatList
+      data={props.items}
+      renderItem={props.renderItem}
+      keyExtractor={props.keyExtractor}
+      extraData={props.items}
+    />
+  );
 };
 
 const NativeFlatList = styled.FlatList``;

@@ -4,6 +4,9 @@ import User from "../interfaces/User/IUser";
 import UserPay from "../interfaces/User/IUserPay";
 import { IItem } from "../interfaces/IItem";
 import { PaymentMode } from "../enums/PaymentMode";
+import { SelectedUser } from "../interfaces/User/ISelectedUser";
+import { v4 as uuidv4 } from "uuid";
+import IBill from "../interfaces/Bill/IBill";
 
 const MapUserToUserPay = (user: User): UserPay => {
   return {
@@ -16,11 +19,7 @@ const MapUserToUserPay = (user: User): UserPay => {
   } as UserPay;
 };
 
-const GetBillPaymentInfo = (
-  bill: Bill,
-  SumToPay: number,
-  sumToPayUser?: number
-): IBillPaymentInfo => {
+const GetBillPaymentInfo = (bill: Bill, SumToPay: number, sumToPayUser?: number): IBillPaymentInfo => {
   return {
     Id: bill.Id,
     Name: bill.Name,
@@ -32,11 +31,7 @@ const GetBillPaymentInfo = (
   };
 };
 
-const GetItemData = (
-  _title: string,
-  _paymentMode: PaymentMode,
-  _sumToPay: number
-): IItem => {
+const GetItemData = (_title: string, _sumToPay?: number, _paymentMode?: PaymentMode): IItem => {
   return {
     title: _title,
     paymentMode: _paymentMode,
@@ -44,4 +39,19 @@ const GetItemData = (
   };
 };
 
-export { MapUserToUserPay, GetBillPaymentInfo, GetItemData };
+const GetBillData = (
+  name: string,
+  price: number,
+  paymentMode: PaymentMode,
+  users: Map<string, SelectedUser>
+): IBill => {
+  return {
+    Id: uuidv4(),
+    Name: name,
+    Price: price,
+    PaymentMode: paymentMode,
+    Payers: Array.from(users.values()).map((x) => x.user),
+  };
+};
+
+export { MapUserToUserPay, GetBillPaymentInfo, GetItemData, GetBillData };

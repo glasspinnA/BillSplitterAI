@@ -1,3 +1,5 @@
+import Color from "color";
+
 export class Colors {
   static BASIC_COLOR: IColors = { key: "color-basic-100", value: "#FFF" };
   static BASIC_COLOR_900: IColors = {
@@ -19,6 +21,10 @@ export class Colors {
   static WARNING: IColors = { key: "color-warning-500", value: "#FFAA00" };
   static DANGER: IColors = { key: "color-danger-500", value: "#FF3D71" };
   static WHITE: IColors = { value: "#FFF" };
+
+  static getBackgroudColor = () => {
+    return Color(Colors.BACKGROUND.value).darken(0.6).hsl().string();
+  };
 }
 
 export interface IColors {

@@ -45,9 +45,10 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
   };
 
   const renderRowBody = () => {
-    return props.item.SumToPayIncomeBased.map((x, index) => (
+    const items = [...props.item.SumToPayEvenBased, ...props.item.SumToPayIncomeBased];
+    return items.map((x, index) => (
       <AnimatedItemContainer
-        item={GetItemData(x.Name, x.PaymentMode, x.SumForUserToPay)}
+        item={GetItemData(x.Name, x.SumForUserToPay, x.PaymentMode)}
         index={index}
         toggled={toggle}
         layout={layout}

@@ -11,6 +11,10 @@ export interface UserPayOverViewScreenProps {}
 export function UserPayOverViewScreen(props: UserPayOverViewScreenProps) {
   const { userPay } = useAppContext();
 
+  React.useEffect(() => {
+    console.log(userPay);
+  }, [userPay]);
+
   return (
     <ScreenContainer>
       <Header>Payment {"\n"}Overview</Header>
