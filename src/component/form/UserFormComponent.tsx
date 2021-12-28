@@ -29,7 +29,7 @@ export function UserForm(props: UserFormProps) {
           <FormElement data={props.data} />
         </View>
         <View style={{ justifyContent: "center", flex: 1 }}>
-          <AddButton onPress={methods.handleSubmit(onPress)}>Add User</AddButton>
+          <AddButton onPress={methods.handleSubmit(onPress)}>Create User</AddButton>
         </View>
       </CustomFormProvider>
     </View>

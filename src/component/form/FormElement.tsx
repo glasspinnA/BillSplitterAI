@@ -17,7 +17,7 @@ export function FormElement(props: FormProps) {
   const elements = props.data.map((x: FormContent) => {
     return (
       <>
-        {x.Text && <Text category={Fontsize.H1}>{x.Text.toUpperCase()}</Text>}
+        {x.Text && <Text category={Fontsize.S1}>{x.Text}</Text>}
         <Controller
           control={control}
           rules={{

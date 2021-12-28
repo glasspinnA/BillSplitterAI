@@ -19,7 +19,7 @@ export function ItemRow(props: ItemRowProps) {
           <FlatListItem.Column flex={3}>
             <FlatListItem.Row flexDirection={FlexDirection.COLUMN}>
               <FlatListItem.Column alignSelf={AlignItems.FLEX_START}>
-                <Text category={Fontsize.H6}>{props.item?.title}</Text>
+                <Text category={Fontsize.S1}>{props.item?.title}</Text>
               </FlatListItem.Column>
               {props.item.paymentMode && (
                 <FlatListItem.Column>

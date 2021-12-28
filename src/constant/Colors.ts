@@ -23,7 +23,7 @@ export class Colors {
   static WHITE: IColors = { value: "#FFF" };
 
   static getBackgroudColor = () => {
-    return Color(Colors.BACKGROUND.value).darken(0.6).hsl().string();
+    return Color(Colors.BACKGROUND.value).darken(0.3).hsl().string();
   };
 }
 

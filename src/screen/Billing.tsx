@@ -21,6 +21,8 @@ import { GetBillData } from "../helpers/MappingHelper";
 import { FormElement } from "../component/form/FormElement";
 import { FormContent } from "../interfaces/IFormData";
 import { CustomFormProvider } from "../component/form/FormProvider";
+import { AddButton } from "../component/AddButton";
+import { View } from "react-native";
 export interface BillingScreenProps {}
 
 export function BillingScreen(props: BillingScreenProps) {
@@ -59,13 +61,11 @@ export function BillingScreen(props: BillingScreenProps) {
   const getCheckboxUsers = (): JSX.Element[] => {
     return users.map((user) => <CheckBox data={user}>{user.Name}</CheckBox>);
   };
-
   const isAnyCheckboxChecked = (): ValidateResult => selectedPayers.size > 0;
-
   const getFormData = (): FormContent[] => {
     return [
-      { Placeholder: "Bill Name", ErrorMessage: "Bill name is required", Name: "Name" },
-      { Placeholder: "Sum To Pay", ErrorMessage: "Sum is required", Name: "Price", Numeric: true },
+      { Text: "Bill Name", Placeholder: "Bill Name", ErrorMessage: "Bill name is required", Name: "Name" },
+      { Text: "Price", Placeholder: "Sum To Pay", ErrorMessage: "Sum is required", Name: "Price", Numeric: true },
     ];
   };
 
@@ -74,45 +74,48 @@ export function BillingScreen(props: BillingScreenProps) {
       <KeyBoardDismiss>
         <Header>Create{"\n"}New Bill</Header>
         <CustomFormProvider form={methods}>
-          <FormElement data={getFormData()} />
-          <Text category={Fontsize.S1}>Bill Type</Text>
-          <ButtonGroup
-            selectedIndex={selectedPaymentMode}
-            onChange={(index: PaymentMode) => {
-              setSelectedPaymentMode(index);
-            }}
-          >
-            {getPaymentModes()}
-          </ButtonGroup>
-          <Text category={Fontsize.S1}>Users</Text>
-          <Controller
-            control={methods.control}
-            rules={{
-              validate: {
-                isChecked: () => isAnyCheckboxChecked(),
-              },
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <ButtonGroup
-                selectedIndex={Array.from(selectedPayers.values()).map((x) => x.index)}
-                onChange={(user: User, index) => {
-                  onCheckBoxPressed(user, index);
-                }}
-              >
-                {getCheckboxUsers()}
-              </ButtonGroup>
-            )}
-            name="User"
-          />
-          <Text
-            style={{ opacity: methods.formState.errors.User ? 1 : 0 }}
-            category={Fontsize.LABEL}
-            status={Status.DANGER}
-          >
-            At least one user is required
-          </Text>
-
-          <Button onPress={methods.handleSubmit(onCreateBillPress)}>Create Bill</Button>
+          <View style={{ flex: 3 }}>
+            <FormElement data={getFormData()} />
+            <Text category={Fontsize.S1}>Bill Type</Text>
+            <ButtonGroup
+              selectedIndex={selectedPaymentMode}
+              onChange={(index: PaymentMode) => {
+                setSelectedPaymentMode(index);
+              }}
+            >
+              {getPaymentModes()}
+            </ButtonGroup>
+            <Text category={Fontsize.S1}>Users</Text>
+            <Controller
+              control={methods.control}
+              rules={{
+                validate: {
+                  isChecked: () => isAnyCheckboxChecked(),
+                },
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <ButtonGroup
+                  selectedIndex={Array.from(selectedPayers.values()).map((x) => x.index)}
+                  onChange={(user: User, index) => {
+                    onCheckBoxPressed(user, index);
+                  }}
+                >
+                  {getCheckboxUsers()}
+                </ButtonGroup>
+              )}
+              name="User"
+            />
+            <Text
+              style={{ opacity: methods.formState.errors.User ? 1 : 0 }}
+              category={Fontsize.LABEL}
+              status={Status.DANGER}
+            >
+              At least two selected user is required
+            </Text>
+          </View>
+          <View style={{ flex: 1 }}>
+            <AddButton onPress={methods.handleSubmit(onCreateBillPress)}>Create Bill</AddButton>
+          </View>
         </CustomFormProvider>
       </KeyBoardDismiss>
     </ScreenContainer>

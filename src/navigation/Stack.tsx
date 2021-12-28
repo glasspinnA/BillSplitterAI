@@ -6,6 +6,7 @@ import { BillingOverViewScreen } from "../screen/BillingOverview";
 import { BillingScreen } from "../screen/Billing";
 import { UserPayOverViewScreen } from "../screen/UserPayOverview";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import { ScreenName } from "../constant/ScreenName";
 import { UserOverviewScreen } from "../screen/UserOverview";
 const Tab = createBottomTabNavigator();
@@ -49,7 +50,7 @@ const devStack = (screens: Screen[]) => {
 const getScreens = (screens: Screen[], isProd?: boolean): JSX.Element[] => {
   return screens.map((x) =>
     isProd ? (
-      <_Stack.Screen name={x.name} component={x.component} />
+      <_Stack.Screen name={x.name} component={x.component} options={{ animation: "default" }} />
     ) : (
       <Tab.Screen name={x.name} component={x.component} />
     )

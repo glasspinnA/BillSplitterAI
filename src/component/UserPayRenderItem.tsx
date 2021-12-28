@@ -9,13 +9,14 @@ import { SumToPay } from "./SumToPay";
 import { Fontsize } from "../constant/Fontsize";
 import { AnimatedItemContainer } from "./animation/AnimatedItemContainer";
 import { GetItemData } from "../helpers/MappingHelper";
+import { AnimatedRowContainer } from "./animation/AnimatedRowContainer";
 
 export interface UserPayRenderItemProps {
   item: UserPay;
 }
 
 export function UserPayRenderItem(props: UserPayRenderItemProps) {
-  const [toggle, setToggle] = React.useState(true);
+  const [shouldToggleState, setToggleState] = React.useState(true);
   const [layout, nSetLayout] = React.useState<LayoutRectangle>();
 
   const renderRowHeader = () => {
@@ -24,13 +25,13 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
         <FlatListItem.Item>
           <FlatListItem.Row flexDirection={FlexDirection.ROW}>
             <FlatListItem.Column flex={3}>
-              <Text category={Fontsize.H6}>{props.item.Name}</Text>
+              <Text category={Fontsize.S1}>{props.item.Name}</Text>
             </FlatListItem.Column>
             <FlatListItem.Column>
               <SumToPay sumToPay={props.item.TotalSumToPay} />
             </FlatListItem.Column>
             <FlatListItem.Column alignItems={AlignItems.CENTER}>
-              <Rotate isClicked={toggle}>
+              <Rotate isClicked={shouldToggleState}>
                 <Icon icon={IconName.CHEVRON} />
               </Rotate>
             </FlatListItem.Column>
@@ -40,30 +41,29 @@ export function UserPayRenderItem(props: UserPayRenderItemProps) {
     );
   };
 
-  const onItemPressed = () => {
-    setToggle(!toggle);
-  };
-
   const renderRowBody = () => {
-    const items = [...props.item.SumToPayEvenBased, ...props.item.SumToPayIncomeBased];
-    return items.map((x, index) => (
+    return getItems().map((x, index) => (
       <AnimatedItemContainer
         item={GetItemData(x.Name, x.SumForUserToPay, x.PaymentMode)}
         index={index}
-        toggled={toggle}
+        toggled={shouldToggleState}
         layout={layout}
       />
     ));
   };
 
+  const getItems = () => {
+    return [...props.item.SumToPayEvenBased, ...props.item.SumToPayIncomeBased];
+  };
+
   return (
-    <>
-      <TouchableWithoutFeedback style={{ flex: 1, maxHeight: 300 }} onPress={onItemPressed}>
-        <View style={{ flex: 1 }}>
+    <TouchableWithoutFeedback onPress={() => setToggleState(!shouldToggleState)}>
+      <View>
+        <AnimatedRowContainer shouldToggleState={shouldToggleState} nbrItems={getItems().length}>
           {renderRowHeader()}
           {props.item.TotalSumToPay > 0 && renderRowBody()}
-        </View>
-      </TouchableWithoutFeedback>
-    </>
+        </AnimatedRowContainer>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }

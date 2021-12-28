@@ -9,19 +9,20 @@ import { v4 as uuidv4 } from "uuid";
 import { useAppContext } from "../context/Consumer";
 import User from "../interfaces/User/IUser";
 import { FormContent } from "../interfaces/IFormData";
+import { Header } from "../component/ScreenHeader";
 export interface CreateUserScreenProps {}
 export function CreateUserScreen(props: CreateUserScreenProps) {
   const data: FormContent[] = [
     {
-      Text: "First & \nLast name",
-      Placeholder: "Enter first & last name",
+      Text: "Name",
+      Placeholder: "First & last name",
       ErrorMessage: "Required",
       Name: "Name",
       Numeric: false,
     },
     {
       Text: "Income",
-      Placeholder: "Enter your income",
+      Placeholder: "Income",
       ErrorMessage: "Required",
       Name: "Income",
       Numeric: true,
@@ -42,6 +43,7 @@ export function CreateUserScreen(props: CreateUserScreenProps) {
   return (
     <ScreenContainer>
       <KeyBoardDismiss>
+        <Header>Create{"\n"}New User</Header>
         <UserForm data={data} onUserSubmit={onSubmit}></UserForm>
       </KeyBoardDismiss>
     </ScreenContainer>

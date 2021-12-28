@@ -5,15 +5,12 @@ import { UserPayRenderItem } from "../component/UserPayRenderItem";
 import { ScreenContainer } from "../component/ScreenContainer";
 import { Header } from "../component/ScreenHeader";
 import { useAppContext } from "../context/Consumer";
+import { GetDummy_UserPay } from "../tests/constants/constants";
 
 export interface UserPayOverViewScreenProps {}
 
 export function UserPayOverViewScreen(props: UserPayOverViewScreenProps) {
   const { userPay } = useAppContext();
-
-  React.useEffect(() => {
-    console.log(userPay);
-  }, [userPay]);
 
   return (
     <ScreenContainer>

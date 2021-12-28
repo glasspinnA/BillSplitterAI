@@ -16,7 +16,7 @@ export interface AnimatedItemProps extends RowContainerProps {
 }
 
 export function AnimatedItemContainer(props: AnimatedItemProps) {
-  const [rotateAnimation, setRotateAnimation] = React.useState(new Animated.Value(0));
+  const [heightAnimaton, setHeightAnimation] = React.useState(new Animated.Value(0));
   const [opacityAnimation, setOpacityAnimation] = React.useState(new Animated.Value(0));
 
   React.useEffect(() => {
@@ -25,7 +25,7 @@ export function AnimatedItemContainer(props: AnimatedItemProps) {
 
   const onItemRowToggled = () => {
     Animated.parallel([
-      Animated.timing(rotateAnimation, GetRowItemAnimationConfig(props.toggled)),
+      Animated.timing(heightAnimaton, GetRowItemAnimationConfig(props.toggled)),
       Animated.timing(opacityAnimation, GetRowItemAnimationConfig(props.toggled)),
     ]).start();
   };
@@ -34,7 +34,7 @@ export function AnimatedItemContainer(props: AnimatedItemProps) {
     return (props.layout?.height ?? 0) + 10;
   };
 
-  const interpolateRotating = rotateAnimation.interpolate({
+  const interpolatHeight = heightAnimaton.interpolate({
     inputRange: [0, 1],
     outputRange: ["-20px", (props.index * getHeight()).toString() + "px"],
   });
@@ -45,7 +45,7 @@ export function AnimatedItemContainer(props: AnimatedItemProps) {
   const animatedStyle = {
     transform: [
       {
-        translateY: interpolateRotating,
+        translateY: interpolatHeight,
       },
     ],
     opacity: interpolateOpacity,

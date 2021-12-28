@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ListRenderItemInfo } from "react-native";
+import { ListRenderItemInfo, View } from "react-native";
 import { Flatlist } from "../component/baseComponents/Flatlist";
 import Bill from "../interfaces/Bill/IBill";
 import { ScreenContainer } from "../component/ScreenContainer";
@@ -10,18 +10,26 @@ import { INavigateActionButton, OverviewComponent } from "./OverviewComponent";
 import { useAppContext } from "../context/Consumer";
 import { ActionType } from "../context/Context";
 import { CalculateSumsToPay } from "../CalculateBill";
-import { GetDummy_Bills, GetDummy_UserPay } from "../tests/constants/constants";
+import { EmptyList } from "../component/baseComponents/ListEmpty";
 
 export interface BillingOverViewScreenProps {}
 
 export function BillingOverViewScreen(props: BillingOverViewScreenProps) {
   const { bills, dispatchAction } = useAppContext();
-  const renderItem = ({ item }: ListRenderItemInfo<Bill>) => (
-    <ItemRow item={GetItemData(item.Name, item.Price, item.PaymentMode)} />
-  );
-  const getFlatList = (): JSX.Element => (
-    <Flatlist<Bill> items={bills} keyExtractor={(item: Bill) => item.Id} renderItem={renderItem} />
-  );
+
+  const getFlatList = (): JSX.Element => {
+    const renderItem = ({ item }: ListRenderItemInfo<Bill>) => (
+      <ItemRow item={GetItemData(item.Name, item.Price, item.PaymentMode)} />
+    );
+    return (
+      <Flatlist<Bill>
+        items={bills}
+        keyExtractor={(item: Bill) => item.Id}
+        renderItem={renderItem}
+        listEmptyComponent={<EmptyList title="Add a bill" />}
+      />
+    );
+  };
   const getOverviewTitle = (): string => "Billing\nOverview";
   const getButtonTitle = (): string => "Add Billing";
 
@@ -34,6 +42,7 @@ export function BillingOverViewScreen(props: BillingOverViewScreenProps) {
       title: "Next",
       screenToNavigate: ScreenName.USER_PAY,
       actionToPerform: () => action(),
+      shouldDisable: bills.length < 1,
     };
   };
 
