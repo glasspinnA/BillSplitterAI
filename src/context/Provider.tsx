@@ -21,6 +21,12 @@ const ContextProvider: React.FC<ContextProviderProps> = (props) => {
       case ActionType.ADD_USER_PAY:
         setUserPay([...userPay, ...payload]);
         break;
+      case ActionType.DELETE_BILL:
+        setBills(bills.filter((x) => x.Id != payload));
+        break;
+      case ActionType.DELETE_USER:
+        setUsers(users.filter((x) => x.Id != payload));
+        break;
       default:
         break;
     }

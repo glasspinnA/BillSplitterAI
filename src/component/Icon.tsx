@@ -25,6 +25,7 @@ class IconName {
   static PLUS: string = "plus-circle";
   static CONTEXT_MENU: string = "ellipsis-v";
   static TRASH: string = "trash";
+  static EDIT_PEN: string = "pen";
 }
 
 export { Icon, IconName };

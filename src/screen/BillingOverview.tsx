@@ -11,6 +11,7 @@ import { useAppContext } from "../context/Consumer";
 import { ActionType } from "../context/Context";
 import { CalculateSumsToPay } from "../CalculateBill";
 import { EmptyList } from "../component/baseComponents/ListEmpty";
+import { IContextMenuAction } from "../component/ContextMenu";
 
 export interface BillingOverViewScreenProps {}
 
@@ -18,9 +19,15 @@ export function BillingOverViewScreen(props: BillingOverViewScreenProps) {
   const { bills, dispatchAction } = useAppContext();
 
   const getFlatList = (): JSX.Element => {
-    const renderItem = ({ item }: ListRenderItemInfo<Bill>) => (
-      <ItemRow item={GetItemData(item.Name, item.Price, item.PaymentMode)} />
-    );
+    const renderItem = ({ item }: ListRenderItemInfo<Bill>) => {
+      const getAction = (): IContextMenuAction => {
+        return {
+          onDelete: deleteUser,
+        };
+      };
+      const deleteUser = () => dispatchAction(ActionType.DELETE_USER, item.Id);
+      return <ItemRow item={GetItemData(item.Id, item.Name, item.Price, item.PaymentMode)} action={getAction()} />;
+    };
     return (
       <Flatlist<Bill>
         items={bills}

@@ -14,6 +14,8 @@ enum ActionType {
   ADD_USER = 0,
   ADD_BILL = 1,
   ADD_USER_PAY = 2,
+  DELETE_USER = 3,
+  DELETE_BILL = 4,
 }
 
 const getProdContext = (): IContext => {

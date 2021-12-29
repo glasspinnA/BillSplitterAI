@@ -10,15 +10,24 @@ import { ItemRow } from "../component/ItemRow";
 import { GetItemData } from "../helpers/MappingHelper";
 import { EmptyList } from "../component/baseComponents/ListEmpty";
 import { UserRequired } from "../component/form/UserRequired";
+import { ActionType } from "../context/Context";
+import { IContextMenuAction } from "../component/ContextMenu";
 
 export interface UserOverviewProps {}
 
 export function UserOverviewScreen(props: UserOverviewProps) {
-  const { users } = useAppContext();
+  const { users, dispatchAction } = useAppContext();
   const NBR_REQUIRED_USERS = 2;
   const getFlatList = (): JSX.Element => {
     const renderItem = ({ item }: ListRenderItemInfo<User>) => {
-      return <ItemRow item={GetItemData(item.Name, item.Income)} />;
+      const getAction = (): IContextMenuAction => {
+        return {
+          onDelete: deleteUser,
+        };
+      };
+      const deleteUser = () => dispatchAction(ActionType.DELETE_USER, item.Id);
+
+      return <ItemRow item={GetItemData(item.Id, item.Name, item.Income)} action={getAction()} />;
     };
 
     return (

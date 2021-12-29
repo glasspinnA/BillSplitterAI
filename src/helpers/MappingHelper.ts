@@ -31,11 +31,12 @@ const GetBillPaymentInfo = (bill: Bill, SumToPay: number, sumToPayUser?: number)
   };
 };
 
-const GetItemData = (_title: string, _sumToPay?: number, _paymentMode?: PaymentMode): IItem => {
+const GetItemData = (_id: string, _title: string, _sumToPay?: number, _paymentMode?: PaymentMode): IItem => {
   return {
     title: _title,
     paymentMode: _paymentMode,
     sumToPay: _sumToPay,
+    id: _id,
   };
 };
 
