@@ -6,12 +6,23 @@ import { Text } from "@ui-kitten/components";
 import { getPaymentModeName } from "../enums/PaymentMode";
 import { IItem } from "../interfaces/IItem";
 import { View } from "react-native";
+import { Menu, MenuOptions, MenuOption, MenuTrigger } from "react-native-popup-menu";
+import { Icon, IconName } from "./Icon";
+import { Colors } from "../constant/Colors";
 
 export interface ItemRowProps {
   item: IItem;
 }
 
 export function ItemRow(props: ItemRowProps) {
+  const test = () => {
+    return (
+      <View>
+        <Icon icon={IconName.PLUS} />
+      </View>
+    );
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <FlatListItem.Item>
@@ -33,6 +44,25 @@ export function ItemRow(props: ItemRowProps) {
               <SumToPay sumToPay={props.item?.sumToPay} />
             </FlatListItem.Column>
           )}
+          <FlatListItem.Column style={{ alignItems: "flex-end" }}>
+            <Menu>
+              <MenuTrigger>
+                <Icon icon={IconName.CONTEXT_MENU} />
+              </MenuTrigger>
+              <MenuOptions>
+                <MenuOption style={{ backgroundColor: Colors.BACKGROUND.value }} onSelect={() => alert(`Save`)}>
+                  <View style={{ flexDirection: "row" }}>
+                    <View style={{ flex: 1 }}>
+                      <Icon icon={IconName.TRASH} />
+                    </View>
+                    <View style={{ flex: 2 }}>
+                      <Text>Delete</Text>
+                    </View>
+                  </View>
+                </MenuOption>
+              </MenuOptions>
+            </Menu>
+          </FlatListItem.Column>
         </FlatListItem.Row>
       </FlatListItem.Item>
     </View>
