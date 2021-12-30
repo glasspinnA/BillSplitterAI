@@ -40,7 +40,10 @@ export function BillingScreen(props: BillingScreenProps) {
     setSelectedPayers(new Map(selectedUsers));
   };
   const onCreateBillPress = (data: any) => {
-    dispatchAction(ActionType.ADD_BILL, GetBillData(data.Name, data.Price, selectedPaymentMode, selectedPayers));
+    dispatchAction(
+      ActionType.ADD_BILL,
+      GetBillData(data.Name, parseInt(data.Price), selectedPaymentMode, selectedPayers)
+    );
     methods.reset();
     navigation.navigate(ScreenName.BILLING_OVERVIEW as never);
   };

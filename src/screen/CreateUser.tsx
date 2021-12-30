@@ -35,7 +35,7 @@ export function CreateUserScreen(props: CreateUserScreenProps) {
     const user: User = {
       Name: data.Name,
       Id: uuidv4(),
-      Income: data.Income,
+      Income: parseInt(data.Income),
     };
     dispatchAction(ActionType.ADD_USER, user);
     navigation.navigate(ScreenName.USER_OVERVIEW as never);
