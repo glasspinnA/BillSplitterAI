@@ -1,5 +1,4 @@
 import { Layout } from "@ui-kitten/components";
-import Color from "color";
 import * as React from "react";
 import { Colors } from "../constant/Colors";
 
