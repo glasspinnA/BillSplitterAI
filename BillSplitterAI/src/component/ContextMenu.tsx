@@ -1,8 +1,8 @@
 import * as React from "react";
 import { View } from "react-native";
 import { Menu, MenuOptions, MenuOption, MenuTrigger } from "react-native-popup-menu";
-import { Icon, IconName } from "./Icon";
-import { Colors } from "../constant/Colors";
+import { Icon, IconName } from "../../../SharedComponent/src/Icon";
+import { Colors } from "../../../SharedComponent/src/constant/Colors";
 import { Text } from "@ui-kitten/components";
 import { useIsMount } from "../hooks/IsMount";
 

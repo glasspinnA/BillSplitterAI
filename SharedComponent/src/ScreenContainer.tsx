@@ -1,6 +1,6 @@
 import { Layout } from "@ui-kitten/components";
 import * as React from "react";
-import { Colors } from "../constant/Colors";
+import { Colors } from "./constant/Colors";
 
 interface AppProps {}
 

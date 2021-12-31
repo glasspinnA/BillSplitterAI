@@ -1,13 +1,11 @@
 import * as React from "react";
 import styled from "styled-components/native";
-import { IButtonChildProps } from "../../interfaces/IButtonChild";
+import { IButtonChildProps } from "../../../BillSplitterAI/src/interfaces/IButtonChild";
 interface ButtonGroup<T> {
   selectedIndex: number | number[];
   onChange: (data: T, index: number) => void;
 }
-const ButtonGroup = <T extends {}>(
-  props: ButtonGroup<T> & { children: React.ReactNode }
-) => {
+const ButtonGroup = <T extends {}>(props: ButtonGroup<T> & { children: React.ReactNode }) => {
   const onChange = (data: T, index: number) => {
     props.onChange && props.onChange(data, index);
   };

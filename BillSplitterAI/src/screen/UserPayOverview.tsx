@@ -1,11 +1,10 @@
 import * as React from "react";
-import { Flatlist } from "../component/baseComponents/Flatlist";
+import { Flatlist } from "../../../SharedComponent/src/baseComponents/Flatlist";
 import UserPay from "../interfaces/User/IUserPay";
 import { UserPayRenderItem } from "../component/UserPayRenderItem";
-import { ScreenContainer } from "../component/ScreenContainer";
-import { Header } from "../component/ScreenHeader";
+import { ScreenContainer } from "../../../SharedComponent/src/ScreenContainer";
+import { Header } from "../../../SharedComponent/src/ScreenHeader";
 import { useAppContext } from "../context/Consumer";
-import { GetDummy_UserPay } from "../tests/constants/constants";
 
 export interface UserPayOverViewScreenProps {}
 

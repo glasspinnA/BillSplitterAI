@@ -33,8 +33,7 @@ interface Row {
 }
 
 const Row = styled.View`
-  flex-direction: ${(props: Row) =>
-    (props.flexDirection ?? FlexDirection.ROW) as string};
+  flex-direction: ${(props: Row) => (props.flexDirection ?? FlexDirection.ROW) as string};
 `;
 
 interface Column {
@@ -44,10 +43,8 @@ interface Column {
 }
 const Column = styled.View`
   flex: ${(props: Column) => (props.flex == undefined ? 1 : props.flex)};
-  align-self: ${(props: Column) =>
-    (props.alignSelf ?? AlignItems.CENTER) as string};
-  align-items: ${(props: Column) =>
-    (props.alignItems ?? AlignItems.FLEX_START) as string};
+  align-self: ${(props: Column) => (props.alignSelf ?? AlignItems.CENTER) as string};
+  align-items: ${(props: Column) => (props.alignItems ?? AlignItems.FLEX_START) as string};
 `;
 
 class AlignItems {
@@ -79,12 +76,4 @@ const ShadowView = styled.View`
   shadow-opacity: 1;
 `;
 
-export {
-  borderRadiusWrapper,
-  sharedPadding,
-  FlatListItem,
-  AlignItems,
-  Container,
-  ShadowView,
-  FlexDirection,
-};
+export { borderRadiusWrapper, sharedPadding, FlatListItem, AlignItems, Container, ShadowView, FlexDirection };

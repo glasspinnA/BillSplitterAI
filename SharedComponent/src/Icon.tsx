@@ -1,7 +1,7 @@
 import { useTheme } from "@ui-kitten/components";
 import * as React from "react";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import { Colors } from "../constant/Colors";
+import { Colors } from "./constant/Colors";
 
 interface IconProps {
   icon: IconName;

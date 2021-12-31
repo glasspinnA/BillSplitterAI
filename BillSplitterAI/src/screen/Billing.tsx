@@ -1,17 +1,17 @@
 import * as React from "react";
-import { RadioButton } from "../component/baseComponents/RadioButton";
-import { ButtonGroup } from "../component/baseComponents/ButtonGroup";
-import { CheckBox } from "../component/baseComponents/Checkbox";
+import { RadioButton } from "../../../SharedComponent/src/baseComponents/RadioButton";
+import { ButtonGroup } from "../../../SharedComponent/src/baseComponents/ButtonGroup";
+import { CheckBox } from "../../../SharedComponent/src/baseComponents/Checkbox";
 import { getPaymentModeName, PaymentMode } from "../enums/PaymentMode";
 import User from "../interfaces/User/IUser";
-import { ScreenContainer } from "../component/ScreenContainer";
-import { Input, Text, Button } from "@ui-kitten/components";
-import { Colors } from "../constant/Colors";
-import { Fontsize } from "../constant/Fontsize";
-import { Header } from "../component/ScreenHeader";
+import { ScreenContainer } from "../../../SharedComponent/src/ScreenContainer";
+import { Text } from "@ui-kitten/components";
+import { Colors } from "../../../SharedComponent/src/constant/Colors";
+import { Fontsize } from "../../../SharedComponent/src/constant/Fontsize";
+import { Header } from "../../../SharedComponent/src/ScreenHeader";
 import { Controller, useForm, ValidateResult } from "react-hook-form";
-import { Status } from "../constant/Status";
-import { KeyBoardDismiss } from "../component/KeyboardDismiss";
+import { Status } from "../../../SharedComponent/src/constant/Status";
+import { KeyBoardDismiss } from "../../../SharedComponent/src/KeyboardDismiss";
 import { useAppContext } from "../context/Consumer";
 import { ActionType } from "../context/Context";
 import { ScreenName } from "../constant/ScreenName";
@@ -99,7 +99,7 @@ export function BillingScreen(props: BillingScreenProps) {
               render={({ field: { onChange, onBlur, value } }) => (
                 <ButtonGroup
                   selectedIndex={Array.from(selectedPayers.values()).map((x) => x.index)}
-                  onChange={(user: User, index) => {
+                  onChange={(user: User, index: number) => {
                     onCheckBoxPressed(user, index);
                   }}
                 >

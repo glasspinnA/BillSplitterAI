@@ -1,12 +1,12 @@
 import * as React from "react";
 import { LayoutRectangle, TouchableWithoutFeedback, View } from "react-native";
 import UserPay from "../interfaces/User/IUserPay";
-import { AlignItems, FlatListItem, FlexDirection } from "../styles/SharedStyles";
-import { Icon, IconName } from "./Icon";
+import { AlignItems, FlatListItem, FlexDirection } from "../../../SharedComponent/src/styles/SharedStyles";
+import { Icon, IconName } from "../../../SharedComponent/src/Icon";
 import { Rotate } from "./animation/Rotate";
 import { Text } from "@ui-kitten/components";
 import { SumToPay } from "./SumToPay";
-import { Fontsize } from "../constant/Fontsize";
+import { Fontsize } from "../../../SharedComponent/src/constant/Fontsize";
 import { AnimatedItemContainer } from "./animation/AnimatedItemContainer";
 import { GetItemData } from "../helpers/MappingHelper";
 import { AnimatedRowContainer } from "./animation/AnimatedRowContainer";

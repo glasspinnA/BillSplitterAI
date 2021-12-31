@@ -2,8 +2,8 @@ import * as React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { FormContent } from "../../interfaces/IFormData";
 import { Input, Text } from "@ui-kitten/components";
-import { Status } from "../../constant/Status";
-import { Fontsize } from "../../constant/Fontsize";
+import { Status } from "../../../../SharedComponent/src/constant/Status";
+import { Fontsize } from "../../../../SharedComponent/src/constant/Fontsize";
 export interface FormProps {
   data: FormContent[];
 }

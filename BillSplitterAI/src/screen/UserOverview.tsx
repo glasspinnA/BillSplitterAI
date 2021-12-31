@@ -1,14 +1,14 @@
 import * as React from "react";
 import { ListRenderItemInfo } from "react-native";
-import { ScreenContainer } from "../component/ScreenContainer";
+import { ScreenContainer } from "../../../SharedComponent/src/ScreenContainer";
 import { ScreenName } from "../constant/ScreenName";
 import { INavigateActionButton, OverviewComponent } from "./OverviewComponent";
 import User from "../interfaces/User/IUser";
 import { useAppContext } from "../context/Consumer";
-import { Flatlist } from "../component/baseComponents/Flatlist";
+import { Flatlist } from "../../../SharedComponent/src/baseComponents/Flatlist";
 import { ItemRow } from "../component/ItemRow";
 import { GetItemData } from "../helpers/MappingHelper";
-import { EmptyList } from "../component/baseComponents/ListEmpty";
+import { EmptyList } from "../../../SharedComponent/src/baseComponents/ListEmpty";
 import { UserRequired } from "../component/form/UserRequired";
 import { ActionType } from "../context/Context";
 import { IContextMenuAction } from "../component/ContextMenu";

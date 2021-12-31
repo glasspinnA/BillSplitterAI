@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components/native";
-import { Colors } from "../constant/Colors";
-import { borderRadiusWrapper } from "../styles/SharedStyles";
+import { Colors } from "../../../SharedComponent/src/constant/Colors";
+import { borderRadiusWrapper } from "../../../SharedComponent/src/styles/SharedStyles";
 import { Text } from "@ui-kitten/components";
 
 export interface SumToPayProps {

@@ -1,5 +1,5 @@
 import { Text } from "@ui-kitten/components";
-import { Fontsize } from "../constant/Fontsize";
+import { Fontsize } from "./constant/Fontsize";
 import * as React from "react";
 
 interface HeaderProps {}

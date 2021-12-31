@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components/native";
-import { Text } from '@ui-kitten/components';
-import { Colors } from "../constant/Colors";
+import { Text } from "@ui-kitten/components";
+import { Colors } from "../../../SharedComponent/src/constant/Colors";
 export interface UserIconProps {
   name: string;
 }

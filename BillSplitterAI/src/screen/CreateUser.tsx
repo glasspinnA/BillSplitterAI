@@ -1,7 +1,7 @@
 import * as React from "react";
-import { ScreenContainer } from "../component/ScreenContainer";
+import { ScreenContainer } from "../../../SharedComponent/src/ScreenContainer";
 import { UserForm } from "../component/form/UserFormComponent";
-import { KeyBoardDismiss } from "../component/KeyboardDismiss";
+import { KeyBoardDismiss } from "../../../SharedComponent/src/KeyboardDismiss";
 import { useNavigation } from "@react-navigation/native";
 import { ScreenName } from "../constant/ScreenName";
 import { ActionType } from "../context/Context";
@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useAppContext } from "../context/Consumer";
 import User from "../interfaces/User/IUser";
 import { FormContent } from "../interfaces/IFormData";
-import { Header } from "../component/ScreenHeader";
+import { Header } from "../../../SharedComponent/src/ScreenHeader";
 export interface CreateUserScreenProps {}
 export function CreateUserScreen(props: CreateUserScreenProps) {
   const data: FormContent[] = [

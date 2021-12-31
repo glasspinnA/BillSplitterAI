@@ -1,8 +1,8 @@
 import { EvaStatus } from "@ui-kitten/components/devsupport";
 import { Button } from "@ui-kitten/components/ui/button/button.component";
 import * as React from "react";
-import { Status } from "../../constant/Status";
-import { IButtonChildProps } from "../../interfaces/IButtonChild";
+import { Status } from "../constant/Status";
+import { IButtonChildProps } from "../../../BillSplitterAI/src/interfaces/IButtonChild";
 
 const CheckBox = <T extends {}>(props: IButtonChildProps<T> & { children: React.ReactNode }) => {
   const onPress = () => props.onPress && props.onPress(props.data);

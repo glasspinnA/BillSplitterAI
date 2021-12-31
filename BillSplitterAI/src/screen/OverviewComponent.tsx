@@ -1,10 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
-import { Button } from "@ui-kitten/components";
 import * as React from "react";
 import { View } from "react-native";
 import { AddButton } from "../component/AddButton";
-import { RoundedButton } from "../component/baseComponents/Button";
-import { Header } from "../component/ScreenHeader";
+import { RoundedButton } from "../../../SharedComponent/src/baseComponents/Button";
+import { Header } from "../../../SharedComponent/src/ScreenHeader";
 import { ScreenName } from "../constant/ScreenName";
 
 export interface OverviewComponentProps {

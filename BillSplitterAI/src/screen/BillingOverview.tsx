@@ -1,8 +1,8 @@
 import * as React from "react";
 import { ListRenderItemInfo, View } from "react-native";
-import { Flatlist } from "../component/baseComponents/Flatlist";
+import { Flatlist } from "../../../SharedComponent/src/baseComponents/Flatlist";
 import Bill from "../interfaces/Bill/IBill";
-import { ScreenContainer } from "../component/ScreenContainer";
+import { ScreenContainer } from "../../../SharedComponent/src/ScreenContainer";
 import { ScreenName } from "../constant/ScreenName";
 import { ItemRow } from "../component/ItemRow";
 import { GetItemData } from "../helpers/MappingHelper";
@@ -10,7 +10,7 @@ import { INavigateActionButton, OverviewComponent } from "./OverviewComponent";
 import { useAppContext } from "../context/Consumer";
 import { ActionType } from "../context/Context";
 import { CalculateSumsToPay } from "../CalculateBill";
-import { EmptyList } from "../component/baseComponents/ListEmpty";
+import { EmptyList } from "../../../SharedComponent/src/baseComponents/ListEmpty";
 import { IContextMenuAction } from "../component/ContextMenu";
 
 export interface BillingOverViewScreenProps {}

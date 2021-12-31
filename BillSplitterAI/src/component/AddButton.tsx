@@ -1,6 +1,6 @@
 import * as React from "react";
-import { RoundedButton } from "./baseComponents/Button";
-import { IconName, Icon } from "./Icon";
+import { RoundedButton } from "../../../SharedComponent/src/baseComponents/Button";
+import { IconName, Icon } from "../../../SharedComponent/src/Icon";
 
 interface AddButtonProps {
   icon?: IconName;

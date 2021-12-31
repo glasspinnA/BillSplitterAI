@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Fontsize } from "../constant/Fontsize";
-import { FlatListItem, FlexDirection, AlignItems } from "../styles/SharedStyles";
+import { Fontsize } from "../../../SharedComponent/src/constant/Fontsize";
+import { FlatListItem, FlexDirection, AlignItems } from "../../../SharedComponent/src/styles/SharedStyles";
 import { SumToPay } from "./SumToPay";
 import { Text } from "@ui-kitten/components";
 import { getPaymentModeName } from "../enums/PaymentMode";
