@@ -32,7 +32,7 @@ const View = styled.View`
   background: ${(props: IButtonChildProps<typeof RadioButton>) => (props.isChecked ? props.color : "transparent")};
   border-width: 2px;
   border-color: ${(props: IButtonChildProps<typeof RadioButton>) =>
-    props.isChecked ? getSelectedBorderColor(props.color) : Colors.DISABLED.value};
+    props.isChecked ? getSelectedBorderColor(props.color!) : Colors.DISABLED.value};
   margin-right: 10px;
 `;
 

@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Input } from "@ui-kitten/components";
+import { StatusBar } from "expo-status-bar";
+import { Layout, Text } from "@ui-kitten/components";
+import React from "react";
+import { View, TextInput } from "react-native";
+import { ApplicationProvider } from "../SharedComponent/src/ApplicationProvider";
+import { ScreenContainer } from "../SharedComponent/src/ScreenContainer";
+import { Icon, IconName } from "../SharedComponent/src/Icon";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ApplicationProvider>
+      <ScreenContainer>
+        <View style={{ padding: 15, flex: 1, alignItems: "stretch", backgroundColor: "red" }}>
+          <View>
+            <Icon icon={IconName.CHEVRON}></Icon>
+            <TextInput
+              multiline={true}
+              style={{ flex: 1, backgroundColor: "blue", textAlign: "center", textAlignVertical: "bottom" }}
+            />
+          </View>
+        </View>
+      </ScreenContainer>
+    </ApplicationProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
