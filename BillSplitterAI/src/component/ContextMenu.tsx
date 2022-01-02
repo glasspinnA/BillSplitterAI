@@ -4,7 +4,7 @@ import { Menu, MenuOptions, MenuOption, MenuTrigger } from "react-native-popup-m
 import { Icon, IconName } from "../../../SharedComponent/src/Icon";
 import { Colors } from "../../../SharedComponent/src/constant/Colors";
 import { Text } from "@ui-kitten/components";
-import { useIsMount } from "../hooks/IsMount";
+import { useIsMount } from "../../../SharedComponent/src/hooks/IsMount";
 
 export interface IContextMenuAction {
   onEdit?: () => any;

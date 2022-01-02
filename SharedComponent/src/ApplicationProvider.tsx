@@ -6,7 +6,7 @@ interface ApplicationProviderProps {}
 
 export const ApplicationProvider: React.FC<ApplicationProviderProps> = (props) => {
   return (
-    <AppProvider {...eva} theme={eva.light}>
+    <AppProvider {...eva} theme={eva.dark}>
       {props.children}
     </AppProvider>
   );
